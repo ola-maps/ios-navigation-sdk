@@ -7,12 +7,18 @@ let package = Package(
         .iOS(.v13)
     ],
     products: [
-        .library(name: "OlaMapNavigationSDK", targets: ["OlaMapNavigationSDK", "OlaMapDirection", "MapLibre", "OlaTurf"]),
+        .library(name: "OlaMapNavigation", targets: ["OlaMapNavigationSDK", "OlaMapDirection", "MapLibre", "OlaTurf"]),
     ],
     dependencies: [
         .package(url: "https://github.com/moengage/MoEngage-iOS-SDK.git", from: "9.16.2"),
     ],
     targets: [
+        .target(
+            name: "OlaMapNavigation",
+            dependencies: [
+                "MoEngage-iOS-SDK"
+            ]
+        ),
         .binaryTarget(
             name: "OlaMapNavigationSDK",
             path: "OlaMapNavigationSDK.xcframework"
