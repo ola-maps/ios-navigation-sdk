@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "OlaMapNavigation",
+     version: "1.0.1",
     platforms: [
         .iOS(.v13)
     ],
