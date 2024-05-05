@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "OlaMapNavigation", targets: ["OlaMapNavigationSDK", "OlaMapDirection", "MapLibre", "OlaTurf"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/moengage/MoEngage-iOS-SDK.git", from: "9.16.2"),
+        .package(url: "https://github.com/moengage/MoEngage-iOS-SDK.git", from: "moengage-9.16.2"),
     ],
     targets: [
         .target(
