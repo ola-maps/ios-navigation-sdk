@@ -1,0 +1,11 @@
+framework module OlaMapNavigationSDK {
+  umbrella header "OlaMapNavigationSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module OlaMapNavigationSDK.Swift {
+  header "OlaMapNavigationSDK-Swift.h"
+  requires objc
+}

@@ -1,0 +1,11 @@
+framework module OlaTurf {
+  umbrella header "OlaTurf.h"
+  export *
+
+  module * { export * }
+}
+
+module OlaTurf.Swift {
+  header "OlaTurf-Swift.h"
+  requires objc
+}
