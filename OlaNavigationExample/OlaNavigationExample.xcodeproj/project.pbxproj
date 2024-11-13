@@ -1,0 +1,536 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7198222B2C6B9C8300253BD8 /* direction_with_waypoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 7198222A2C6B9C8300253BD8 /* direction_with_waypoints.json */; };
+		719822552C6BA6D000253BD8 /* Mapbox.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822442C6BA6CC00253BD8 /* Mapbox.xcframework */; };
+		719822562C6BA6D000253BD8 /* Mapbox.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822442C6BA6CC00253BD8 /* Mapbox.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719822572C6BA6D200253BD8 /* MoEngageAnalytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822412C6BA6CC00253BD8 /* MoEngageAnalytics.xcframework */; };
+		719822582C6BA6D200253BD8 /* MoEngageAnalytics.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822412C6BA6CC00253BD8 /* MoEngageAnalytics.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719822592C6BA6D300253BD8 /* MoEngageCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822462C6BA6CC00253BD8 /* MoEngageCore.xcframework */; };
+		7198225A2C6BA6D300253BD8 /* MoEngageCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822462C6BA6CC00253BD8 /* MoEngageCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7198225B2C6BA6D400253BD8 /* MoEngageMessaging.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822472C6BA6CC00253BD8 /* MoEngageMessaging.xcframework */; };
+		7198225C2C6BA6D400253BD8 /* MoEngageMessaging.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822472C6BA6CC00253BD8 /* MoEngageMessaging.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7198225D2C6BA6D500253BD8 /* MoEngageObjCUtils.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822452C6BA6CC00253BD8 /* MoEngageObjCUtils.xcframework */; };
+		7198225E2C6BA6D500253BD8 /* MoEngageObjCUtils.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822452C6BA6CC00253BD8 /* MoEngageObjCUtils.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7198225F2C6BA6D600253BD8 /* MoEngageSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822432C6BA6CC00253BD8 /* MoEngageSDK.xcframework */; };
+		719822602C6BA6D600253BD8 /* MoEngageSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822432C6BA6CC00253BD8 /* MoEngageSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719822612C6BA6D800253BD8 /* MoEngageSecurity.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822482C6BA6CC00253BD8 /* MoEngageSecurity.xcframework */; };
+		719822622C6BA6D800253BD8 /* MoEngageSecurity.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822482C6BA6CC00253BD8 /* MoEngageSecurity.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719822632C6BA6D900253BD8 /* OlaMapDirection.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822422C6BA6CC00253BD8 /* OlaMapDirection.xcframework */; };
+		719822642C6BA6D900253BD8 /* OlaMapDirection.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822422C6BA6CC00253BD8 /* OlaMapDirection.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719822652C6BA6DA00253BD8 /* OlaMapNavigation.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 719822492C6BA6CC00253BD8 /* OlaMapNavigation.xcframework */; };
+		719822662C6BA6DA00253BD8 /* OlaMapNavigation.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 719822492C6BA6CC00253BD8 /* OlaMapNavigation.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719822672C6BA6DB00253BD8 /* OlaTurf.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7198224A2C6BA6CC00253BD8 /* OlaTurf.xcframework */; };
+		719822682C6BA6DB00253BD8 /* OlaTurf.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7198224A2C6BA6CC00253BD8 /* OlaTurf.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		719ACEBB2C6BA87F00CC4F37 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719ACEBA2C6BA87F00CC4F37 /* AppUtility.swift */; };
+		71CA5AB82C6A185100228F8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA5AB72C6A185100228F8B /* AppDelegate.swift */; };
+		71CA5ABA2C6A185100228F8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA5AB92C6A185100228F8B /* SceneDelegate.swift */; };
+		71CA5ABC2C6A185100228F8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA5ABB2C6A185100228F8B /* ViewController.swift */; };
+		71CA5ABF2C6A185100228F8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CA5ABD2C6A185100228F8B /* Main.storyboard */; };
+		71CA5AC12C6A185300228F8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CA5AC02C6A185300228F8B /* Assets.xcassets */; };
+		71CA5AC42C6A185300228F8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CA5AC22C6A185300228F8B /* LaunchScreen.storyboard */; };
+		71CA5ACE2C6A20EC00228F8B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA5ACD2C6A20EC00228F8B /* BaseViewController.swift */; };
+		71CA5AD02C6A216900228F8B /* RoutePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA5ACF2C6A216900228F8B /* RoutePreviewViewController.swift */; };
+		71CA5AD22C6A217100228F8B /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA5AD12C6A217100228F8B /* NavigationViewController.swift */; };
+		71CA5AE22C6A232500228F8B /* direction_one.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CA5AD92C6A232500228F8B /* direction_one.json */; };
+		71CA5AE32C6A232500228F8B /* direction_two.json in Resources */ = {isa = PBXBuildFile; fileRef = 71CA5ADA2C6A232500228F8B /* direction_two.json */; };
+		71CA5AE72C6A332600228F8B /* NavigationViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA5AE62C6A332600228F8B /* NavigationViewControllerUI.swift */; };
+		71CA5AEA2C6A365700228F8B /* TimeintervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CA5AE92C6A365700228F8B /* TimeintervalExtension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		71528DF82C6AB0B700FE02CA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				719822562C6BA6D000253BD8 /* Mapbox.xcframework in Embed Frameworks */,
+				719822662C6BA6DA00253BD8 /* OlaMapNavigation.xcframework in Embed Frameworks */,
+				7198225C2C6BA6D400253BD8 /* MoEngageMessaging.xcframework in Embed Frameworks */,
+				719822622C6BA6D800253BD8 /* MoEngageSecurity.xcframework in Embed Frameworks */,
+				719822582C6BA6D200253BD8 /* MoEngageAnalytics.xcframework in Embed Frameworks */,
+				719822682C6BA6DB00253BD8 /* OlaTurf.xcframework in Embed Frameworks */,
+				719822602C6BA6D600253BD8 /* MoEngageSDK.xcframework in Embed Frameworks */,
+				719822642C6BA6D900253BD8 /* OlaMapDirection.xcframework in Embed Frameworks */,
+				7198225E2C6BA6D500253BD8 /* MoEngageObjCUtils.xcframework in Embed Frameworks */,
+				7198225A2C6BA6D300253BD8 /* MoEngageCore.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7198222A2C6B9C8300253BD8 /* direction_with_waypoints.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = direction_with_waypoints.json; sourceTree = "<group>"; };
+		719822412C6BA6CC00253BD8 /* MoEngageAnalytics.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BPWYRAF5X7:MoEngage Inc."; lastKnownFileType = wrapper.xcframework; path = MoEngageAnalytics.xcframework; sourceTree = "<group>"; };
+		719822422C6BA6CC00253BD8 /* OlaMapDirection.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OlaMapDirection.xcframework; sourceTree = "<group>"; };
+		719822432C6BA6CC00253BD8 /* MoEngageSDK.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BPWYRAF5X7:MoEngage Inc."; lastKnownFileType = wrapper.xcframework; path = MoEngageSDK.xcframework; sourceTree = "<group>"; };
+		719822442C6BA6CC00253BD8 /* Mapbox.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Mapbox.xcframework; sourceTree = "<group>"; };
+		719822452C6BA6CC00253BD8 /* MoEngageObjCUtils.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BPWYRAF5X7:MoEngage Inc."; lastKnownFileType = wrapper.xcframework; path = MoEngageObjCUtils.xcframework; sourceTree = "<group>"; };
+		719822462C6BA6CC00253BD8 /* MoEngageCore.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BPWYRAF5X7:MoEngage Inc."; lastKnownFileType = wrapper.xcframework; path = MoEngageCore.xcframework; sourceTree = "<group>"; };
+		719822472C6BA6CC00253BD8 /* MoEngageMessaging.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BPWYRAF5X7:MoEngage Inc."; lastKnownFileType = wrapper.xcframework; path = MoEngageMessaging.xcframework; sourceTree = "<group>"; };
+		719822482C6BA6CC00253BD8 /* MoEngageSecurity.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BPWYRAF5X7:MoEngage Inc."; lastKnownFileType = wrapper.xcframework; path = MoEngageSecurity.xcframework; sourceTree = "<group>"; };
+		719822492C6BA6CC00253BD8 /* OlaMapNavigation.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OlaMapNavigation.xcframework; sourceTree = "<group>"; };
+		7198224A2C6BA6CC00253BD8 /* OlaTurf.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = OlaTurf.xcframework; sourceTree = "<group>"; };
+		719ACEBA2C6BA87F00CC4F37 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		71CA5AB42C6A185100228F8B /* OlaNavigationExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OlaNavigationExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		71CA5AB72C6A185100228F8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		71CA5AB92C6A185100228F8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		71CA5ABB2C6A185100228F8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		71CA5ABE2C6A185100228F8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		71CA5AC02C6A185300228F8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		71CA5AC32C6A185300228F8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		71CA5AC52C6A185300228F8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71CA5ACD2C6A20EC00228F8B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		71CA5ACF2C6A216900228F8B /* RoutePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePreviewViewController.swift; sourceTree = "<group>"; };
+		71CA5AD12C6A217100228F8B /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		71CA5AD92C6A232500228F8B /* direction_one.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = direction_one.json; sourceTree = "<group>"; };
+		71CA5ADA2C6A232500228F8B /* direction_two.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = direction_two.json; sourceTree = "<group>"; };
+		71CA5AE62C6A332600228F8B /* NavigationViewControllerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewControllerUI.swift; sourceTree = "<group>"; };
+		71CA5AE92C6A365700228F8B /* TimeintervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeintervalExtension.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		71CA5AB12C6A185100228F8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				719822592C6BA6D300253BD8 /* MoEngageCore.xcframework in Frameworks */,
+				719822552C6BA6D000253BD8 /* Mapbox.xcframework in Frameworks */,
+				719822572C6BA6D200253BD8 /* MoEngageAnalytics.xcframework in Frameworks */,
+				7198225F2C6BA6D600253BD8 /* MoEngageSDK.xcframework in Frameworks */,
+				7198225B2C6BA6D400253BD8 /* MoEngageMessaging.xcframework in Frameworks */,
+				719822672C6BA6DB00253BD8 /* OlaTurf.xcframework in Frameworks */,
+				719822612C6BA6D800253BD8 /* MoEngageSecurity.xcframework in Frameworks */,
+				7198225D2C6BA6D500253BD8 /* MoEngageObjCUtils.xcframework in Frameworks */,
+				719822632C6BA6D900253BD8 /* OlaMapDirection.xcframework in Frameworks */,
+				719822652C6BA6DA00253BD8 /* OlaMapNavigation.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		719822402C6BA6CC00253BD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				719822412C6BA6CC00253BD8 /* MoEngageAnalytics.xcframework */,
+				719822422C6BA6CC00253BD8 /* OlaMapDirection.xcframework */,
+				719822432C6BA6CC00253BD8 /* MoEngageSDK.xcframework */,
+				719822442C6BA6CC00253BD8 /* Mapbox.xcframework */,
+				719822452C6BA6CC00253BD8 /* MoEngageObjCUtils.xcframework */,
+				719822462C6BA6CC00253BD8 /* MoEngageCore.xcframework */,
+				719822472C6BA6CC00253BD8 /* MoEngageMessaging.xcframework */,
+				719822482C6BA6CC00253BD8 /* MoEngageSecurity.xcframework */,
+				719822492C6BA6CC00253BD8 /* OlaMapNavigation.xcframework */,
+				7198224A2C6BA6CC00253BD8 /* OlaTurf.xcframework */,
+			);
+			path = Frameworks;
+			sourceTree = SOURCE_ROOT;
+		};
+		71CA5AAB2C6A185100228F8B = {
+			isa = PBXGroup;
+			children = (
+				71CA5AB62C6A185100228F8B /* OlaNavigationExample */,
+				71CA5AB52C6A185100228F8B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		71CA5AB52C6A185100228F8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71CA5AB42C6A185100228F8B /* OlaNavigationExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71CA5AB62C6A185100228F8B /* OlaNavigationExample */ = {
+			isa = PBXGroup;
+			children = (
+				71CA5AB72C6A185100228F8B /* AppDelegate.swift */,
+				71CA5AB92C6A185100228F8B /* SceneDelegate.swift */,
+				719822402C6BA6CC00253BD8 /* Frameworks */,
+				71CA5AE82C6A364800228F8B /* Utility */,
+				71CA5AD32C6A232500228F8B /* JSON */,
+				71CA5ACC2C6A20D600228F8B /* Usecases */,
+				71CA5ABD2C6A185100228F8B /* Main.storyboard */,
+				71CA5AC02C6A185300228F8B /* Assets.xcassets */,
+				71CA5AC22C6A185300228F8B /* LaunchScreen.storyboard */,
+				71CA5AC52C6A185300228F8B /* Info.plist */,
+			);
+			path = OlaNavigationExample;
+			sourceTree = "<group>";
+		};
+		71CA5ACC2C6A20D600228F8B /* Usecases */ = {
+			isa = PBXGroup;
+			children = (
+				71CA5ABB2C6A185100228F8B /* ViewController.swift */,
+				71CA5ACD2C6A20EC00228F8B /* BaseViewController.swift */,
+				71CA5ACF2C6A216900228F8B /* RoutePreviewViewController.swift */,
+				71CA5AD12C6A217100228F8B /* NavigationViewController.swift */,
+				71CA5AE62C6A332600228F8B /* NavigationViewControllerUI.swift */,
+			);
+			path = Usecases;
+			sourceTree = "<group>";
+		};
+		71CA5AD32C6A232500228F8B /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				71CA5AD92C6A232500228F8B /* direction_one.json */,
+				71CA5ADA2C6A232500228F8B /* direction_two.json */,
+				7198222A2C6B9C8300253BD8 /* direction_with_waypoints.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		71CA5AE82C6A364800228F8B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				71CA5AE92C6A365700228F8B /* TimeintervalExtension.swift */,
+				719ACEBA2C6BA87F00CC4F37 /* AppUtility.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		71CA5AB32C6A185100228F8B /* OlaNavigationExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71CA5AC82C6A185300228F8B /* Build configuration list for PBXNativeTarget "OlaNavigationExample" */;
+			buildPhases = (
+				71CA5AB02C6A185100228F8B /* Sources */,
+				71CA5AB12C6A185100228F8B /* Frameworks */,
+				71CA5AB22C6A185100228F8B /* Resources */,
+				71528DF82C6AB0B700FE02CA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OlaNavigationExample;
+			productName = OlaNavigationExample;
+			productReference = 71CA5AB42C6A185100228F8B /* OlaNavigationExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		71CA5AAC2C6A185100228F8B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					71CA5AB32C6A185100228F8B = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 71CA5AAF2C6A185100228F8B /* Build configuration list for PBXProject "OlaNavigationExample" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 71CA5AAB2C6A185100228F8B;
+			productRefGroup = 71CA5AB52C6A185100228F8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				71CA5AB32C6A185100228F8B /* OlaNavigationExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		71CA5AB22C6A185100228F8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71CA5AE32C6A232500228F8B /* direction_two.json in Resources */,
+				71CA5AE22C6A232500228F8B /* direction_one.json in Resources */,
+				71CA5AC42C6A185300228F8B /* LaunchScreen.storyboard in Resources */,
+				71CA5AC12C6A185300228F8B /* Assets.xcassets in Resources */,
+				7198222B2C6B9C8300253BD8 /* direction_with_waypoints.json in Resources */,
+				71CA5ABF2C6A185100228F8B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		71CA5AB02C6A185100228F8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71CA5AD22C6A217100228F8B /* NavigationViewController.swift in Sources */,
+				71CA5AE72C6A332600228F8B /* NavigationViewControllerUI.swift in Sources */,
+				719ACEBB2C6BA87F00CC4F37 /* AppUtility.swift in Sources */,
+				71CA5ABC2C6A185100228F8B /* ViewController.swift in Sources */,
+				71CA5AEA2C6A365700228F8B /* TimeintervalExtension.swift in Sources */,
+				71CA5ACE2C6A20EC00228F8B /* BaseViewController.swift in Sources */,
+				71CA5AD02C6A216900228F8B /* RoutePreviewViewController.swift in Sources */,
+				71CA5AB82C6A185100228F8B /* AppDelegate.swift in Sources */,
+				71CA5ABA2C6A185100228F8B /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		71CA5ABD2C6A185100228F8B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71CA5ABE2C6A185100228F8B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		71CA5AC22C6A185300228F8B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71CA5AC32C6A185300228F8B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		71CA5AC62C6A185300228F8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		71CA5AC72C6A185300228F8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		71CA5AC92C6A185300228F8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = STV2VP7XA6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OlaNavigationExample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "OlaMap Navigation";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App wants to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App wants to access your location";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.8;
+				PRODUCT_BUNDLE_IDENTIFIER = io.olamaps.app.platform;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "OlaMap App Platform";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		71CA5ACA2C6A185300228F8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = STV2VP7XA6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OlaNavigationExample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "OlaMap Navigation";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App wants to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App wants to access your location";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.8;
+				PRODUCT_BUNDLE_IDENTIFIER = io.olamaps.app.platform;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "OlaMap App Platform Dist";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		71CA5AAF2C6A185100228F8B /* Build configuration list for PBXProject "OlaNavigationExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71CA5AC62C6A185300228F8B /* Debug */,
+				71CA5AC72C6A185300228F8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71CA5AC82C6A185300228F8B /* Build configuration list for PBXNativeTarget "OlaNavigationExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71CA5AC92C6A185300228F8B /* Debug */,
+				71CA5ACA2C6A185300228F8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 71CA5AAC2C6A185100228F8B /* Project object */;
+}

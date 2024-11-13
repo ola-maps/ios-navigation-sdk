@@ -1,0 +1,2614 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OlaMapNavigation
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import CarPlay
+import Combine
+import CoreGraphics
+import CoreLocation
+import DeveloperToolsSupport
+import Foundation
+import Mapbox
+import MoEngageSDK
+import ObjectiveC
+import OlaMapDirectionFramework
+@_exported import OlaMapNavigation
+import OlaTurf
+import Swift
+import SwiftUI
+import UIKit.UIDevice
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class GenericRouteShield : OlaMapNavigation.StylableView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(MBUserPuckCourseView) @_Concurrency.MainActor(unsafe) public class UserPuckCourseView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func update(location: CoreLocation.CLLocation, pitch: CoreFoundation.CGFloat, direction: CoreLocation.CLLocationDegrees, animated: Swift.Bool, tracksUserCourse: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var puckColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var fillColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var shadowColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+public class LocationPersmission {
+  public init()
+  public func request()
+  public func userLocationAvailable() -> Swift.Bool
+  @objc deinit
+}
+@objc(MBRouteController) open class RouteController : ObjectiveC.NSObject, OlaMapNavigation.Router {
+  public var routeControllerProactiveReroutingInterval: Swift.Double
+  public var shouldReturnTestingETAUpdateReroutes: Swift.Bool
+  public var shouldCheckForRerouteInLastMinutes: Swift.Bool
+  @objc weak public var delegate: (any OlaMapNavigation.RouteControllerDelegate)?
+  @objc public var locationManager: OlaMapNavigation.NavigationLocationManager! {
+    @objc get
+    @objc set
+  }
+  @objc public var directions: OlaMapDirectionFramework.Directions
+  @objc public var isDeadReckoningEnabled: Swift.Bool
+  @objc public var reroutesProactively: Swift.Bool
+  public var tunnelIntersectionManager: OlaMapNavigation.TunnelIntersectionManager
+  @objc public var routeProgress: OlaMapNavigation.RouteProgress {
+    @objc get
+    @objc set
+  }
+  @objc public var usesDefaultUserInterface: Swift.Bool
+  @objc public enum RerouteReason : Swift.Int, Swift.CustomStringConvertible {
+    case ETAUpdate
+    case divertedFromRoute
+    case fasterRoute
+    public var description: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public var userHasArrivedAtDestinationRegion: Swift.Bool
+  @objc(initWithRoute:directions:locationManager:) public init(along route: OlaMapDirectionFramework.Route, directions: OlaMapDirectionFramework.Directions = Directions(), locationManager: OlaMapNavigation.NavigationLocationManager = NavigationLocationManager())
+  @objc deinit
+  @objc public func resume()
+  @objc public func suspendLocationUpdates()
+  @objc public func endNavigation()
+  @objc public var location: CoreLocation.CLLocation? {
+    @objc get
+  }
+  @objc public var reroutingTolerance: CoreLocation.CLLocationDistance {
+    @objc get
+  }
+}
+extension OlaMapNavigation.RouteController : CoreLocation.CLLocationManagerDelegate {
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateHeading newHeading: CoreLocation.CLHeading)
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
+  @objc dynamic public func userIsOnRoute(_ location: CoreLocation.CLLocation) -> Swift.Bool
+}
+extension OlaMapNavigation.RouteController : OlaMapNavigation.TunnelIntersectionManagerDelegate {
+  @objc dynamic public func tunnelIntersectionManager(_ manager: OlaMapNavigation.TunnelIntersectionManager, willEnableAnimationAt location: CoreLocation.CLLocation)
+  @objc dynamic public func tunnelIntersectionManager(_ manager: OlaMapNavigation.TunnelIntersectionManager, willDisableAnimationAt location: CoreLocation.CLLocation)
+}
+extension Swift.Array {
+  public static func locations(from filePath: Swift.String) -> [CoreLocation.CLLocation]!
+}
+@_hasMissingDesignatedInitializers public class OlaDistanceFormatter {
+  public class func format(_ distance: CoreLocation.CLLocationDistance) -> (absoluteValue: Swift.Double, valueInString: Swift.String)
+  @objc deinit
+}
+extension OlaMapNavigation.OlaMapService {
+  public func setTileURL(_ url: Foundation.URL)
+  public func reloadStyle()
+}
+public struct OlaCoordinate : Swift.Equatable, Swift.CustomStringConvertible {
+  public init(latitude: Swift.Double, longitude: Swift.Double)
+  public init(_ cooridnate: CoreLocation.CLLocationCoordinate2D)
+  public init(_ location: CoreLocation.CLLocation)
+  public var getLatitude: Swift.Double {
+    get
+  }
+  public var getLongitude: Swift.Double {
+    get
+  }
+  public var inDelimeter: Swift.String {
+    get
+  }
+  public func getCLCoordinate2D() -> CoreLocation.CLLocationCoordinate2D
+  public func getCLLocation() -> CoreLocation.CLLocation
+  public var description: Swift.String {
+    get
+  }
+  public static func == (lhs: OlaMapNavigation.OlaCoordinate, rhs: OlaMapNavigation.OlaCoordinate) -> Swift.Bool
+}
+public class OlaStepRoute {
+  public init(start: OlaMapNavigation.OlaCoordinate, end: OlaMapNavigation.OlaCoordinate, color: UIKit.UIColor, width: Swift.Double = 4.5)
+  @objc deinit
+}
+extension CoreLocation.CLLocationCoordinate2D {
+  public func encodedString() -> Swift.String
+  public func encodedUniqueString(_ str: Swift.String) -> Swift.String
+}
+@objc(MBNavigationViewController) @_Concurrency.MainActor(unsafe) open class NavigationViewController : UIKit.UIViewController {
+  @objc @_Concurrency.MainActor(unsafe) public var route: OlaMapDirectionFramework.Route! {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var directions: OlaMapDirectionFramework.Directions!
+  @objc @_Concurrency.MainActor(unsafe) public var pendingCamera: Mapbox.MGLMapCamera?
+  @objc @_Concurrency.MainActor(unsafe) public var origin: (any Mapbox.MGLAnnotation)?
+  @objc @_Concurrency.MainActor(unsafe) public var voiceController: OlaMapNavigation.RouteVoiceController!
+  @objc @_Concurrency.MainActor(unsafe) public var routeController: OlaMapNavigation.RouteController! {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var mapView: OlaMapNavigation.NavigationMapView? {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var snapsUserLocationAnnotationToRoute: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var sendsNotifications: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var showsReportFeedback: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var showsEndOfRouteFeedback: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var automaticallyAdjustsStyleForTimeOfDay: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var shouldManageApplicationIdleTimer: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var isUsedInConjunctionWithCarPlayWindow: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var annotatesSpokenInstructions: Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) required public init(for route: OlaMapDirectionFramework.Route, directions: OlaMapDirectionFramework.Directions = Directions(), styles: [OlaMapNavigation.Style]? = [DayStyle(), NightStyle()], routeController: OlaMapNavigation.RouteController? = nil, locationManager: OlaMapNavigation.NavigationLocationManager? = nil, voiceController: OlaMapNavigation.RouteVoiceController? = nil, mapDecorator: OlaMapNavigation.MapDecorator = MapDecorator())
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @available(iOS 12.0, *)
+  @_Concurrency.MainActor(unsafe) public class func carPlayManager(_ carPlayManager: OlaMapNavigation.CarPlayManager, didBeginNavigationWith routeController: OlaMapNavigation.RouteController, window: UIKit.UIWindow)
+  @available(iOS 12.0, *)
+  @_Concurrency.MainActor(unsafe) public class func carPlayManagerDidEndNavigation(_ carPlayManager: OlaMapNavigation.CarPlayManager, window: UIKit.UIWindow)
+}
+extension OlaMapNavigation.NavigationViewController {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: OlaMapNavigation.NavigationMapView, routeCasingStyleLayerWithIdentifier identifier: Swift.String, source: Mapbox.MGLSource) -> Mapbox.MGLStyleLayer?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: OlaMapNavigation.NavigationMapView, routeStyleLayerWithIdentifier identifier: Swift.String, source: Mapbox.MGLSource) -> Mapbox.MGLStyleLayer?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: OlaMapNavigation.NavigationMapView, didSelect route: OlaMapDirectionFramework.Route)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: OlaMapNavigation.NavigationMapView, shapeFor routes: [OlaMapDirectionFramework.Route]) -> Mapbox.MGLShape?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: OlaMapNavigation.NavigationMapView, simplifiedShapeFor route: OlaMapDirectionFramework.Route) -> Mapbox.MGLShape?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: OlaMapNavigation.NavigationMapView, waypointStyleLayerWithIdentifier identifier: Swift.String, source: Mapbox.MGLSource) -> Mapbox.MGLStyleLayer?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: OlaMapNavigation.NavigationMapView, waypointSymbolStyleLayerWithIdentifier identifier: Swift.String, source: Mapbox.MGLSource) -> Mapbox.MGLStyleLayer?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: OlaMapNavigation.NavigationMapView, shapeFor waypoints: [OlaMapDirectionFramework.Waypoint], legIndex: Swift.Int) -> Mapbox.MGLShape?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: Mapbox.MGLMapView, imageFor annotation: any Mapbox.MGLAnnotation) -> Mapbox.MGLAnnotationImage?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: Mapbox.MGLMapView, viewFor annotation: any Mapbox.MGLAnnotation) -> Mapbox.MGLAnnotationView?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapViewUserAnchorPoint(_ mapView: OlaMapNavigation.NavigationMapView) -> CoreFoundation.CGPoint
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func label(_ label: OlaMapNavigation.InstructionLabel, willPresent instruction: OlaMapDirectionFramework.VisualInstruction, as presented: Foundation.NSAttributedString) -> Foundation.NSAttributedString?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationMapView(_ mapView: Mapbox.MGLMapView, regionDidChangeWith reason: Mapbox.MGLCameraChangeReason, animated: Swift.Bool)
+}
+extension OlaMapNavigation.NavigationViewController : OlaMapNavigation.RouteControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func routeController(_ routeController: OlaMapNavigation.RouteController, shouldRerouteFrom location: CoreLocation.CLLocation) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func routeController(_ routeController: OlaMapNavigation.RouteController, willRerouteFrom location: CoreLocation.CLLocation)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func routeController(_ routeController: OlaMapNavigation.RouteController, didRerouteAlong route: OlaMapDirectionFramework.Route)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func routeController(_ routeController: OlaMapNavigation.RouteController, didFailToRerouteWith error: any Swift.Error)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func routeController(_ routeController: OlaMapNavigation.RouteController, shouldDiscard location: CoreLocation.CLLocation) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func routeController(_ routeController: OlaMapNavigation.RouteController, didUpdate locations: [CoreLocation.CLLocation])
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func routeController(_ routeController: OlaMapNavigation.RouteController, didArriveAt waypoint: OlaMapDirectionFramework.Waypoint) -> Swift.Bool
+}
+extension OlaMapNavigation.NavigationViewController : OlaMapNavigation.TunnelIntersectionManagerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tunnelIntersectionManager(_ manager: OlaMapNavigation.TunnelIntersectionManager, willEnableAnimationAt location: CoreLocation.CLLocation)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tunnelIntersectionManager(_ manager: OlaMapNavigation.TunnelIntersectionManager, willDisableAnimationAt location: CoreLocation.CLLocation)
+}
+extension OlaMapNavigation.NavigationViewController : OlaMapNavigation.StyleManagerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationFor(styleManager: OlaMapNavigation.StyleManager) -> CoreLocation.CLLocation?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func styleManager(_ styleManager: OlaMapNavigation.StyleManager, didApply style: OlaMapNavigation.Style)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func styleManagerDidRefreshAppearance(_ styleManager: OlaMapNavigation.StyleManager)
+}
+extension OlaMapNavigation.NavigationViewController {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func routeControllerUpdateUserLocation(_ routeController: OlaMapNavigation.RouteController, didUpdateUserLocation locations: CoreLocation.CLLocation)
+}
+extension Foundation.NSNotification.Name {
+  public static let navigationSettingsDidChange: Foundation.NSNotification.Name
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(MBNavigationSettings) public class NavigationSettings : ObjectiveC.NSObject {
+  @objc dynamic public var voiceVolume: Swift.Float
+  @objc dynamic public var voiceMuted: Swift.Bool
+  @objc dynamic public var distanceUnit: Foundation.LengthFormatter.Unit
+  public static let shared: OlaMapNavigation.NavigationSettings
+  @objc deinit
+  @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+}
+extension Swift.Double {
+  public var miles: Swift.Double {
+    get
+  }
+  public var feet: Swift.Double {
+    get
+  }
+  public var yards: Swift.Double {
+    get
+  }
+  public var kilometers: Swift.Double {
+    get
+  }
+  public func inMiles() -> Swift.Double
+  public func inYards() -> Swift.Double
+}
+extension Foundation.NSAttributedString.Key {
+  public static let quantity: Foundation.NSAttributedString.Key
+}
+@objc(MBDistanceFormatter) open class DistanceFormatter : Foundation.LengthFormatter {
+  public var unit: Foundation.LengthFormatter.Unit {
+    get
+  }
+  @objc public init(approximate: Swift.Bool = false)
+  @objc required dynamic public init?(coder decoder: Foundation.NSCoder)
+  @objc override dynamic open func encode(with aCoder: Foundation.NSCoder)
+  @objc public func string(from distance: CoreLocation.CLLocationDistance) -> Swift.String
+  @objc override dynamic open func string(fromMeters numberInMeters: Swift.Double) -> Swift.String
+  @available(iOS 10.0, *)
+  @objc(measurementOfDistance:) public func measurement(of distance: CoreLocation.CLLocationDistance) -> Foundation.Measurement<Foundation.UnitLength>
+  @objc override dynamic open func attributedString(for obj: Any, withDefaultAttributes attrs: [Foundation.NSAttributedString.Key : Any]? = nil) -> Foundation.NSAttributedString?
+  @objc deinit
+}
+@objc @_Concurrency.MainActor(unsafe) open class OlaAnnotationView : Mapbox.MGLAnnotationView {
+  @_Concurrency.MainActor(unsafe) public init(identifier: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public var didSelectOnAnnotation: ((_ identifier: Swift.String) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
+  @_Concurrency.MainActor(unsafe) public func setBounds(_ bound: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) public func addOffset(point: CoreFoundation.CGVector)
+  @_Concurrency.MainActor(unsafe) public func updateColor(_ color: UIKit.UIColor)
+  @_Concurrency.MainActor(unsafe) public func updateIdentifier(_ id: Swift.String)
+  @_Concurrency.MainActor(unsafe) public func setRotate(_ value: Swift.Double)
+  @objc deinit
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func placeViewAtCenter(of parentView: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) public func rotate(angle: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public var isDarkModeOn: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var safeAreaBottom: CoreFoundation.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var safeAreaTop: CoreFoundation.CGFloat {
+    get
+  }
+}
+@objc(MBRouteControllerDelegate) public protocol RouteControllerDelegate {
+  @objc(routeController:shouldRerouteFromLocation:) optional func routeController(_ routeController: OlaMapNavigation.RouteController, shouldRerouteFrom location: CoreLocation.CLLocation) -> Swift.Bool
+  @objc(routeController:willRerouteFromLocation:) optional func routeController(_ routeController: OlaMapNavigation.RouteController, willRerouteFrom location: CoreLocation.CLLocation)
+  @objc(routeController:shouldDiscardLocation:) optional func routeController(_ routeController: OlaMapNavigation.RouteController, shouldDiscard location: CoreLocation.CLLocation) -> Swift.Bool
+  @objc(routeController:didRerouteAlongRoute:reason:) optional func routeController(_ routeController: OlaMapNavigation.RouteController, didRerouteAlong route: OlaMapDirectionFramework.Route, reason: OlaMapNavigation.RouteController.RerouteReason)
+  @objc(routeController:didFailToRerouteWithError:) optional func routeController(_ routeController: OlaMapNavigation.RouteController, didFailToRerouteWith error: any Swift.Error)
+  @objc(routeController:didUpdateLocations:) optional func routeController(_ routeController: OlaMapNavigation.RouteController, didUpdate locations: [CoreLocation.CLLocation])
+  @objc(routeController:didArriveAtWaypoint:) optional func routeController(_ routeController: OlaMapNavigation.RouteController, didArriveAt waypoint: OlaMapDirectionFramework.Waypoint) -> Swift.Bool
+  @objc(routeController:shouldPreventReroutesWhenArrivingAtWaypoint:) optional func routeController(_ routeController: OlaMapNavigation.RouteController, shouldPreventReroutesWhenArrivingAt waypoint: OlaMapDirectionFramework.Waypoint) -> Swift.Bool
+  @objc(routeControllerShouldDisableBatteryMonitoring:) optional func routeControllerShouldDisableBatteryMonitoring(_ routeController: OlaMapNavigation.RouteController) -> Swift.Bool
+  @objc(routeController:didUpdateUserLocation:) optional func routeControllerUpdateUserLocation(_ routeController: OlaMapNavigation.RouteController, didUpdateUserLocation locations: CoreLocation.CLLocation)
+}
+public protocol MapServiceProtocol {
+  func recenterMap()
+  func addWaterMark(_ view: UIKit.UIView)
+  func addCurrentLocationButton(_ view: UIKit.UIView)
+  func setCamera(at coordinates: OlaMapNavigation.OlaCoordinate, _ zoom: Swift.Double)
+  func setMarker(at coordinates: OlaMapNavigation.OlaCoordinate, marker: OlaMapNavigation.OlaMapMarker)
+  func setCustomAnnotationMarker(at olaCoordinates: [OlaMapNavigation.OlaCoordinate], annotationView: OlaMapNavigation.OlaAnnotationView)
+  func loadMap(onView: UIKit.UIView, coordinate: OlaMapNavigation.OlaCoordinate?, showWaterMark: Swift.Bool, showCurrentLocationIcon: Swift.Bool, loadStyleFromLocale: Swift.Bool)
+  func isOlaAnnotation(byId id: Swift.String) -> Swift.Bool
+}
+@objc(MBTunnelIntersectionManagerDelegate) public protocol TunnelIntersectionManagerDelegate {
+  @objc(tunnelIntersectionManager:willEnableAnimationAtLocation:) optional func tunnelIntersectionManager(_ manager: OlaMapNavigation.TunnelIntersectionManager, willEnableAnimationAt location: CoreLocation.CLLocation)
+  @objc(tunnelIntersectionManager:willDisableAnimationAtLocation:) optional func tunnelIntersectionManager(_ manager: OlaMapNavigation.TunnelIntersectionManager, willDisableAnimationAt location: CoreLocation.CLLocation)
+}
+@_inheritsConvenienceInitializers @objc(MBTunnelIntersectionManager) open class TunnelIntersectionManager : ObjectiveC.NSObject {
+  @objc weak public var delegate: (any OlaMapNavigation.TunnelIntersectionManagerDelegate)?
+  @objc public var animatedLocationManager: OlaMapNavigation.SimulatedLocationManager?
+  @objc public var tunnelExitLocations: [CoreLocation.CLLocation]
+  @objc public var tunnelSimulationEnabled: Swift.Bool
+  @objc public func userWithinTunnelEntranceRadius(at location: CoreLocation.CLLocation, routeProgress: OlaMapNavigation.RouteProgress) -> Swift.Bool
+  @objc public func enableTunnelAnimation(routeController: OlaMapNavigation.RouteController, routeProgress: OlaMapNavigation.RouteProgress)
+  @objc public func suspendTunnelAnimation(at location: CoreLocation.CLLocation, routeController: OlaMapNavigation.RouteController)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public let MBSpeechErrorDomain: Swift.String
+@objc(MBSpeechSynthesizer) open class SpeechSynthesizer : ObjectiveC.NSObject {
+  public typealias CompletionHandler = (_ data: Foundation.Data?, _ error: Foundation.NSError?) -> Swift.Void
+  @objc(sharedSpeechSynthesizer) public static let shared: OlaMapNavigation.SpeechSynthesizer
+  @objc public init(accessToken: Swift.String?, host: Swift.String?)
+  @objc convenience public init(accessToken: Swift.String?)
+  @discardableResult
+  @objc(audioDataWithOptions:completionHandler:) open func audioData(with options: OlaMapNavigation.SpeechOptions, completionHandler: @escaping OlaMapNavigation.SpeechSynthesizer.CompletionHandler) -> Foundation.URLSessionDataTask
+  @objc(URLForSynthesizingSpeechWithOptions:) open func url(forSynthesizing options: OlaMapNavigation.SpeechOptions) -> Foundation.URL
+  @objc deinit
+}
+extension Swift.String {
+  public var encode: Swift.String {
+    get
+  }
+}
+extension Swift.Optional where Wrapped == Swift.String {
+  public var defaultValue: Swift.String {
+    get
+  }
+}
+extension Swift.Double {
+  public var toKilometers: Swift.Double {
+    get
+  }
+}
+extension Swift.Int {
+  public var toKilometers: Swift.Int {
+    get
+  }
+}
+public class OlaVisualInstruction {
+  final public let primaryText: Swift.String?
+  final public let secondaryText: Swift.String?
+  final public let tertiaryInstruction: Swift.String?
+  final public let distanceAlongStep: CoreLocation.CLLocationDistance?
+  final public let formatedDistanceAlongStep: Swift.String?
+  final public let currentStep: Swift.Int
+  final public let maneuver: OlaMapNavigation.OlaManeuverType
+  final public let upComingInstruction: Swift.String?
+  final public let upComingManeuver: OlaMapNavigation.OlaManeuverType?
+  public init(primaryText: Swift.String?, secondaryText: Swift.String?, tertiaryInstruction: Swift.String?, distanceAlongStep: Swift.Double?, formatedDistanceAlongStep: Swift.String?, currentStep: Swift.Int, maneuver: OlaMapNavigation.OlaManeuverType, upComingInstruction: Swift.String?, upComingManeuver: OlaMapNavigation.OlaManeuverType?)
+  @objc deinit
+}
+public class OlaInstruction : Swift.CustomStringConvertible {
+  final public let text: Swift.String?
+  final public let duration: Foundation.TimeInterval
+  final public let durationRemaining: Foundation.TimeInterval
+  final public let distanceRemaining: CoreLocation.CLLocationDistance
+  final public let formattedDistanceRemaining: Swift.String
+  final public let arrivalTime: Swift.String?
+  public init(_ text: Swift.String?, _ duration: Foundation.TimeInterval, _ durationRemaining: Foundation.TimeInterval, _ distanceRemaining: CoreLocation.CLLocationDistance, _ arrivalTime: Swift.String?, _ formattedDistanceRemaining: Swift.String)
+  public var description: Swift.String {
+    get
+  }
+  @objc deinit
+}
+public enum OlaManeuverType : Swift.String {
+  case none
+  case depart
+  case turn
+  case `continue`
+  case passNameChange
+  case merge
+  case takeOnRamp
+  case takeOffRamp
+  case reachFork
+  case reachEnd
+  case useLane
+  case takeRoundabout
+  case takeRotary
+  case turnAtRoundabout
+  case exitRoundabout
+  case exitRotary
+  case heedWarning
+  case arrive
+  case passWaypoint
+  case turnRight
+  case turnLeft
+  case turnSharpRight
+  case turnSharpLeft
+  case turnSlightRight
+  case turnSlightLeft
+  case uturn
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct InstructionList : Swift.CustomStringConvertible {
+  public let maneuver: OlaMapNavigation.OlaManeuverType
+  public let instruction: Swift.String
+  public let distance: CoreLocation.CLLocationDistance
+  public let formattedDistance: Swift.String
+  public var description: Swift.String {
+    get
+  }
+}
+public protocol OLAMapSubviewsProtocol {
+  var mapView: Mapbox.MGLMapView? { get set }
+  func getMapButtonsView(buttons: [OlaMapNavigation.OLAMapButton]) -> UIKit.UIView
+  func regionIsChanging()
+  var isButtonPressed: (() -> Swift.Void)? { get set }
+}
+final public class OLAMapSubviewsManager : OlaMapNavigation.OLAMapSubviewsProtocol {
+  final public var isButtonPressed: (() -> Swift.Void)?
+  final public var mapView: Mapbox.MGLMapView? {
+    get
+    set
+  }
+  public init(mapView: Mapbox.MGLMapView? = nil)
+  final public func getMapButtonsView(buttons: [OlaMapNavigation.OLAMapButton]) -> UIKit.UIView
+  final public func regionIsChanging()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBEndOfRouteContentView) @_Concurrency.MainActor(unsafe) open class EndOfRouteContentView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBEndOfRouteTitleLabel) @_Concurrency.MainActor(unsafe) open class EndOfRouteTitleLabel : OlaMapNavigation.StylableLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBEndOfRouteStaticLabel) @_Concurrency.MainActor(unsafe) open class EndOfRouteStaticLabel : OlaMapNavigation.StylableLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBEndOfRouteCommentView) @_Concurrency.MainActor(unsafe) open class EndOfRouteCommentView : OlaMapNavigation.StylableTextView {
+  @available(iOS 7.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect, textContainer: UIKit.NSTextContainer?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBEndOfRouteButton) @_Concurrency.MainActor(unsafe) open class EndOfRouteButton : OlaMapNavigation.StylableButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 12.0, *)
+@objc(MBCarPlayNavigationViewController) @_Concurrency.MainActor(unsafe) public class CarPlayNavigationViewController : UIKit.UIViewController, Mapbox.MGLMapViewDelegate {
+  @objc @_Concurrency.MainActor(unsafe) weak public var carPlayNavigationDelegate: (any OlaMapNavigation.CarPlayNavigationDelegate)?
+  @objc @_Concurrency.MainActor(unsafe) public var drivingSide: OlaMapDirectionFramework.DrivingSide
+  @objc(initForRouteController:mapTemplate:interfaceController:) @_Concurrency.MainActor(unsafe) public init(for routeController: OlaMapNavigation.RouteController, mapTemplate: CarPlay.CPMapTemplate, interfaceController: CarPlay.CPInterfaceController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewSafeAreaInsetsDidChange()
+  @objc(startNavigationSessionForTrip:) @_Concurrency.MainActor(unsafe) public func startNavigationSession(for trip: CarPlay.CPTrip)
+  @objc(exitNavigationByCanceling:) @_Concurrency.MainActor(unsafe) public func exitNavigation(byCanceling canceled: Swift.Bool = false)
+  @objc @_Concurrency.MainActor(unsafe) public func showFeedback()
+  @objc @_Concurrency.MainActor(unsafe) public var tracksUserCourse: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public func beginPanGesture()
+  @_Concurrency.MainActor(unsafe) @objc public func mapView(_ mapView: Mapbox.MGLMapView, didFinishLoading style: Mapbox.MGLStyle)
+  @objc deinit
+}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayNavigationViewController : OlaMapNavigation.StyleManagerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationFor(styleManager: OlaMapNavigation.StyleManager) -> CoreLocation.CLLocation?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func styleManager(_ styleManager: OlaMapNavigation.StyleManager, didApply style: OlaMapNavigation.Style)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func styleManagerDidRefreshAppearance(_ styleManager: OlaMapNavigation.StyleManager)
+}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayNavigationViewController : OlaMapNavigation.RouteControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func routeController(_ routeController: OlaMapNavigation.RouteController, didArriveAt waypoint: OlaMapDirectionFramework.Waypoint) -> Swift.Bool
+}
+@available(iOS 12.0, *)
+@objc(MBNavigationCarPlayDelegate) public protocol CarPlayNavigationDelegate {
+  @objc(carPlayNavigationViewControllerDidDismiss:byCanceling:) func carPlayNavigationViewControllerDidDismiss(_ carPlayNavigationViewController: OlaMapNavigation.CarPlayNavigationViewController, byCanceling canceled: Swift.Bool)
+  @objc func carPlayNavigationViewControllerDidArrive(_ carPlayNavigationViewController: OlaMapNavigation.CarPlayNavigationViewController)
+}
+@objc open class EndOfRouteFeedback : ObjectiveC.NSObject {
+  @nonobjc public init(rating: Swift.Int? = nil, comment: Swift.String? = nil)
+  @objc convenience public init(rating ratingNumber: Foundation.NSNumber?, comment: Swift.String?)
+  @objc deinit
+}
+public enum OlaMapError : Swift.Error {
+  case noApiKey
+  case noInternet
+  case noStyle
+  case jsonParsing
+  case noMapView
+  case noMarkerID
+  case invalidPolygon
+  case invalidRoute(OlaMapNavigation.RouteInValidType)
+  case custom(Swift.String)
+  public var message: Swift.String {
+    get
+  }
+}
+public enum SpokenInstructionErrorCode : Swift.Int {
+  case unknown
+  case audioPlayerFailedToPlay
+  case emptyMapboxSpeechResponse
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum MBErrorCode : Swift.Int {
+  case unknown
+  case spokenInstructionFailed
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class IncidentReportViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewWillAppear(_ animated: Swift.Bool)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+@objc(MBReplayLocationManager) open class ReplayLocationManager : OlaMapNavigation.NavigationLocationManager {
+  @objc public var speedMultiplier: Swift.Double
+  @objc public var locations: [CoreLocation.CLLocation]! {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var location: CoreLocation.CLLocation? {
+    @objc get
+  }
+  public init(locations: [CoreLocation.CLLocation])
+  @objc deinit
+  @objc override dynamic open func startUpdatingLocation()
+  @objc override dynamic open func stopUpdatingLocation()
+}
+extension UIKit.UIEdgeInsets {
+  public static func + (left: UIKit.UIEdgeInsets, right: UIKit.UIEdgeInsets) -> UIKit.UIEdgeInsets
+  public static func > (lhs: UIKit.UIEdgeInsets, rhs: UIKit.UIEdgeInsets) -> Swift.Bool
+}
+extension UIKit.UIEdgeInsets : Swift.ExpressibleByFloatLiteral {
+  public typealias FloatLiteralType = Swift.Double
+  public init(floatLiteral value: UIKit.UIEdgeInsets.FloatLiteralType)
+}
+extension UIKit.UIWindow {
+  @_Concurrency.MainActor(unsafe) public func capture() -> UIKit.UIImage?
+}
+@_hasMissingDesignatedInitializers public class OLATrafficModel {
+  @objc deinit
+}
+extension OlaMapNavigation.OlaMapService {
+  public func deleteMarker(id: Swift.String)
+  public func setMarker(at coordinate: OlaMapNavigation.OlaCoordinate, marker: OlaMapNavigation.OlaMapMarker)
+  public func isOlaAnnotatinonLayer(_ id: Swift.String) -> Swift.Bool
+  public func hideMarker(_ marker: OlaMapNavigation.OlaMapMarker)
+}
+public typealias CompletionHandler = () -> Swift.Void
+@objc(MBBimodalCache) public protocol BimodalCache {
+  @objc func clearMemory()
+  @objc func clearDisk(completion: OlaMapNavigation.CompletionHandler?)
+}
+@objc(MBBimodalImageCache) public protocol BimodalImageCache : OlaMapNavigation.BimodalCache {
+  @objc func store(_ image: UIKit.UIImage, forKey key: Swift.String, toDisk: Swift.Bool, completion completionBlock: OlaMapNavigation.CompletionHandler?)
+  @objc func image(forKey: Swift.String?) -> UIKit.UIImage?
+}
+@objc(MBBimodalDataCache) public protocol BimodalDataCache : OlaMapNavigation.BimodalCache {
+  @objc func store(_ data: Foundation.Data, forKey key: Swift.String, toDisk: Swift.Bool, completion completionBlock: OlaMapNavigation.CompletionHandler?)
+  @objc func data(forKey: Swift.String?) -> Foundation.Data?
+}
+public var RouteControllerMaximumDistanceBeforeRecalculating: Swift.Double
+public var RouteControllerMaximumAllowedDegreeOffsetForTurnCompletion: Swift.Double
+public var RouteControllerMediumAlertInterval: Swift.Double
+public var RouteControllerHighAlertInterval: Swift.Double
+public var RouteControllerManeuverZoneRadius: Swift.Double
+public var RouteControllerDeadReckoningTimeInterval: Swift.Double
+public var NavigationMetricsDebugLoggingEnabled: Swift.String
+public let RouteControllerLinkedInstructionBufferMultiplier: Swift.Double
+public var RouteSnappingMinimumSpeed: Swift.Double
+public var RouteControllerMinimumDistanceForContinueInstruction: Swift.Double
+public var RouteControllerMinimumBacktrackingDistanceForRerouting: Swift.Double
+public var RouteControllerMinimumNumberLocationUpdatesBackwards: Swift.Int
+public var RouteControllerNumberOfSecondsForRerouteFeedback: Swift.Double
+public var RouteControllerUserLocationSnappingDistance: Swift.Double
+public var RouteSnappingMaxManipulatedCourseAngle: Swift.Double
+public var RouteSnappingMinimumHorizontalAccuracy: Swift.Double
+public var RouteControllerMinNumberOfInCorrectCourses: Swift.Int
+public var RouteControllerIncorrectCourseMultiplier: Swift.Int
+public var RouteControllerMinimumDistanceToTunnelEntrance: Swift.Double
+public var RouteControllerMinimumSpeedAtTunnelEntranceRadius: Swift.Double
+public var RouteControllerMaximumSpeedForUsingCurrentStep: Swift.Double
+public var UserLocationThresholdDistanceAwayFromRoute: Swift.Double
+public var MinimumNumberOfTimeUserLocationAwayFromRoute: Swift.Int
+public typealias RouteControllerNotificationUserInfoKey = OlaMapNavigation.MBRouteControllerNotificationUserInfoKey
+extension Foundation.NSNotification.Name {
+  public static let routeControllerDidFailToReroute: Foundation.NSNotification.Name
+  public static let routeControllerWillReroute: Foundation.NSNotification.Name
+  public static let routeControllerDidReroute: Foundation.NSNotification.Name
+  public static let routeControllerProgressDidChange: Foundation.NSNotification.Name
+  public static let routeControllerDidPassSpokenInstructionPoint: Foundation.NSNotification.Name
+  public static let routeControllerDidPassVisualInstructionPoint: Foundation.NSNotification.Name
+}
+@objc(MBTextType) public enum TextType : Swift.UInt, Swift.CustomStringConvertible, Swift.Codable {
+  case text
+  case ssml
+  public init?(description: Swift.String)
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.UInt)
+  public typealias RawValue = Swift.UInt
+  public var rawValue: Swift.UInt {
+    get
+  }
+}
+@objc(MBAudioFormat) public enum AudioFormat : Swift.UInt, Swift.CustomStringConvertible, Swift.Codable {
+  case mp3
+  public init?(description: Swift.String)
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.UInt)
+  public typealias RawValue = Swift.UInt
+  public var rawValue: Swift.UInt {
+    get
+  }
+}
+@objc(MBSpeechGender) public enum SpeechGender : Swift.UInt, Swift.CustomStringConvertible, Swift.Codable {
+  case female
+  case male
+  case neuter
+  public init?(description: Swift.String)
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.UInt)
+  public typealias RawValue = Swift.UInt
+  public var rawValue: Swift.UInt {
+    get
+  }
+}
+@objc(MBSpeechOptions) open class SpeechOptions : ObjectiveC.NSObject, Swift.Codable {
+  @objc public init(text: Swift.String)
+  @objc public init(ssml: Swift.String)
+  @objc open var text: Swift.String
+  @objc open var outputFormat: OlaMapNavigation.AudioFormat
+  @objc open var locale: Foundation.Locale
+  @objc open var speechGender: OlaMapNavigation.SpeechGender
+  @objc deinit
+  open func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(MBLanesStyleKit) public class LanesStyleKit : ObjectiveC.NSObject {
+  @objc dynamic public class func drawLane_straight_right(primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000))
+  @objc dynamic public class func drawLane_straight_only(primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), secondaryColor: UIKit.UIColor = UIColor(red: 0.618, green: 0.618, blue: 0.618, alpha: 1.000))
+  @objc dynamic public class func drawLane_right_h(primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000))
+  @objc dynamic public class func drawLane_right_only(primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), secondaryColor: UIKit.UIColor = UIColor(red: 0.618, green: 0.618, blue: 0.618, alpha: 1.000))
+  @objc dynamic public class func drawLane_straight(primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000))
+  @objc dynamic public class func drawLane_uturn(primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000))
+  @objc dynamic public class func drawLane_slight_right(primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), scale: CoreFoundation.CGFloat = 1)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension OlaMapNavigation.OlaMapService {
+  public func drawPolygon(identifier: Swift.String, _ coordinates: [OlaMapNavigation.OlaCoordinate], zoneColor: UIKit.UIColor? = nil, strokeColor: UIKit.UIColor? = nil, storkeWidth: CoreFoundation.CGFloat? = nil)
+}
+extension OlaMapNavigation.OlaMapService {
+  public func drawCircle(id: Swift.String, centerCoordinate: OlaMapNavigation.OlaCoordinate, radius: Swift.Double, strokeColor: UIKit.UIColor = .systemGreen, zoneColor: UIKit.UIColor, strokeWidth: CoreFoundation.CGFloat)
+}
+@objc(MBSimulatedLocationManager) open class SimulatedLocationManager : OlaMapNavigation.NavigationLocationManager {
+  @objc public var speedMultiplier: Swift.Double
+  @objc override dynamic open var location: CoreLocation.CLLocation? {
+    @objc get
+  }
+  @objc override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc public init(route: OlaMapDirectionFramework.Route)
+  @objc public init(routeProgress: OlaMapNavigation.RouteProgress)
+  @objc deinit
+  @objc override dynamic open func startUpdatingLocation()
+  @objc override dynamic open func stopUpdatingLocation()
+}
+public enum NavigationTrackingMode {
+  case modeNone
+  case modeFollow
+  case followWithHeading
+  case followWithCourse
+  public static func == (a: OlaMapNavigation.NavigationTrackingMode, b: OlaMapNavigation.NavigationTrackingMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol OlaMapServiceDelegate : AnyObject {
+  func mapViewDidChange(gesture: OlaMapNavigation.OlaMapGesture)
+  func mapViewDidBecomeIdle()
+  func didChangeLocationManagerAuthorization(_ state: CoreLocation.CLAuthorizationStatus)
+  func regionDidChangeAnimated()
+  func didChangeCamera()
+  func regionIsChanging(_ gesture: OlaMapNavigation.OlaMapGesture)
+  func didAddAnnotationViewsOnMap()
+  func regionDidChangeAnimated(_ mode: OlaMapNavigation.NavigationTrackingMode)
+  func didTapOnMap(_ coordinate: OlaMapNavigation.OlaCoordinate)
+  func didTapOnMap(feature: OlaMapNavigation.POIModel)
+  func didLongTapOnMap(_ coordinate: OlaMapNavigation.OlaCoordinate)
+  func didRouteSelected(_ route: OlaMapNavigation.OlaRoute)
+  func didRouteSelected(_ overviewPolyline: Swift.String)
+  func mapFailedToLoad(_ error: any Swift.Error)
+  func mapSuccessfullyLoaded()
+  func mapSuccessfullyLoadedStyle()
+  func didSelectAnnotationView(_ annotationId: Swift.String)
+}
+extension OlaMapNavigation.OlaMapServiceDelegate {
+  public func mapViewDidChange(gesture: OlaMapNavigation.OlaMapGesture)
+  public func mapViewDidBecomeIdle()
+  public func didAddAnnotationViewsOnMap()
+  public func didChangeLocationManagerAuthorization(_ state: CoreLocation.CLAuthorizationStatus)
+  public func regionDidChangeAnimated()
+  public func regionDidChangeAnimated(_ mode: OlaMapNavigation.NavigationTrackingMode)
+  public func didTapOnMap(_ coordinate: OlaMapNavigation.OlaCoordinate)
+  public func didLongTapOnMap(_ coordinate: OlaMapNavigation.OlaCoordinate)
+  public func didRouteSelected(_ route: OlaMapNavigation.OlaRoute)
+  public func didRouteSelected(_ overviewPolyline: Swift.String)
+  public func mapSuccessfullyLoaded()
+  public func mapSuccessfullyLoadedStyle()
+  public func didSelectAnnotationView(_ annotationId: Swift.String)
+  public func didTapOnMap(feature: OlaMapNavigation.POIModel)
+}
+@_inheritsConvenienceInitializers @objc(MBDayStyle) open class DayStyle : OlaMapNavigation.Style {
+  @objc required dynamic public init()
+  @objc override open func apply()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBNightStyle) open class NightStyle : OlaMapNavigation.DayStyle {
+  @objc required dynamic public init()
+  @objc override open func apply()
+  @objc deinit
+}
+public protocol MapInstrumentationProtocol : AnyObject {
+  func tapOnCalloutView(_ identifier: Swift.String?)
+  func didFailToLocateUser(_ error: any Swift.Error)
+  func mapWillStartLoading()
+  func mapRegionIsChanging()
+  func mapDidFailLoading(_ error: any Swift.Error)
+  func addAnnotationView(_ annotations: [Mapbox.MGLAnnotationView])
+  func mapBecameIdle()
+  func didFinishMapLoading()
+  func didFinishMapRendering(_ isRendered: Swift.Bool)
+  func didFinishMapRenderingFrame(_ isRendered: Swift.Bool)
+  func didSelectAnnotation(_ annotation: any Mapbox.MGLAnnotation)
+  func didSelectAnnotationView(_ annotationView: Mapbox.MGLAnnotationView)
+  func didFaileToLoadImage(_ imageName: Swift.String)
+  func didChangeTrackingMode(_ mode: Mapbox.MGLUserTrackingMode)
+  func regionDidChange(_ reason: Mapbox.MGLCameraChangeReason)
+  func loadAnnotationView(_ annotationView: Mapbox.MGLAnnotationView?)
+}
+public protocol OlaMapInstrumentationDelegate : AnyObject {
+  func tapOnCalloutView(_ identifier: Swift.String?)
+  func didFailToLocateUser(_ error: any Swift.Error)
+  func mapWillStartLoading()
+  func mapRegionIsChanging()
+  func mapDidFailLoading(_ error: any Swift.Error)
+  func addAnnotationView()
+  func mapBecameIdle()
+  func didFinishMapLoadingStyle()
+  func didFinishMapLoading()
+  func didFinishMapRendering(_ isRendered: Swift.Bool)
+  func didFinishMapRenderingFrame(_ isRendered: Swift.Bool)
+  func didSelectAnnotation()
+  func didSelectAnnotationView()
+  func didFaileToLoadImage(_ imageName: Swift.String)
+  func didChangeTrackingMode()
+  func regionDidChange()
+  func loadAnnotationView()
+}
+@_hasMissingDesignatedInitializers public class OlaMapInstrumentation : OlaMapNavigation.MapInstrumentationProtocol {
+  public func tapOnCalloutView(_ identifier: Swift.String?)
+  public func didFailToLocateUser(_ error: any Swift.Error)
+  public func mapWillStartLoading()
+  public func mapRegionIsChanging()
+  public func mapDidFailLoading(_ error: any Swift.Error)
+  public func addAnnotationView(_ annotations: [Mapbox.MGLAnnotationView])
+  public func mapBecameIdle()
+  public func didFinishLoadingMapStyle()
+  public func didFailedToLoadMapStyle()
+  public func didFinishMapLoading()
+  public func didFinishMapRendering(_ isRendered: Swift.Bool)
+  public func didFinishMapRenderingFrame(_ isRendered: Swift.Bool)
+  public func didSelectAnnotation(_ annotation: any Mapbox.MGLAnnotation)
+  public func didSelectAnnotationView(_ annotationView: Mapbox.MGLAnnotationView)
+  public func didFaileToLoadImage(_ imageName: Swift.String)
+  public func didChangeTrackingMode(_ mode: Mapbox.MGLUserTrackingMode)
+  public func regionDidChange(_ reason: Mapbox.MGLCameraChangeReason)
+  public func loadAnnotationView(_ annotationView: Mapbox.MGLAnnotationView?)
+  public func logTrafficPolyline(_ encodedPolyline: Swift.String, travelAdvisory: Swift.String, count: Swift.Int)
+  public func mapLoadTime(_ time: Swift.Double)
+  @objc deinit
+}
+extension OlaMapNavigation.OlaMapInstrumentation {
+  public func didNavigationCompleted(wayPointName: Swift.String, description: Swift.String)
+  public func didArrivedInDestinationRegion(_ distance: Swift.Double)
+  public func willReroute(_ location: CoreLocation.CLLocation)
+  public func didReroute(_ location: CoreLocation.CLLocation)
+  public func didFailToRerouteWith(_ error: any Swift.Error)
+  public func onUpdateNavigation(_ data: [Swift.String : Any])
+  public func onDirectionData(_ data: [Swift.String : Any], origin: CoreLocation.CLLocation, destination: CoreLocation.CLLocation)
+  public func endNavigation()
+  public func mapPermissionStatus(_ status: Swift.String)
+}
+extension CoreFoundation.CGSize : Swift.ExpressibleByFloatLiteral {
+  public typealias FloatLiteralType = Swift.Double
+  public init(size: Swift.Double)
+  public init(floatLiteral value: CoreFoundation.CGSize.FloatLiteralType)
+}
+public enum CommuteMode {
+  case walking
+  case driving
+  case solid
+  public static func == (a: OlaMapNavigation.CommuteMode, b: OlaMapNavigation.CommuteMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol OlaNavigationProtocol : AnyObject {
+  func didUpdateVisualInstruction(_ instruction: OlaMapNavigation.OlaVisualInstruction)
+  func didUpdateSpokenInstruction(_ instruction: OlaMapNavigation.OlaInstruction)
+  func didNavigationCompleted()
+  func didArrivedInDestinationRegion()
+  func didUpdateBottomInstruction(_ instruction: OlaMapNavigation.OlaInstruction)
+  func availableSteps(_ steps: [OlaMapNavigation.InstructionList])
+  func didUpdateVisualDistance(_ distance: CoreLocation.CLLocationDistance, _ formattedString: Swift.String?)
+  func regionIsChanging(_ gesture: OlaMapNavigation.OlaMapGesture)
+  func willReroute(_ lastLocation: CoreLocation.CLLocation, _ tailCoordinate: CoreLocation.CLLocationCoordinate2D?)
+  func didReroute(_ lastLocation: CoreLocation.CLLocation, _ tailCoordinate: CoreLocation.CLLocationCoordinate2D?)
+  func didFailToRerouteWith(_ error: any Swift.Error)
+  func navigationDidDismiss()
+  func didReceiveInvalidRoute(type: OlaMapNavigation.RouteInValidType)
+  func didRequestETARefresh(_ location: CoreLocation.CLLocation, completion: @escaping (Swift.Result<OlaMapNavigation.EtaRefreshResponseModel, any Swift.Error>) -> Swift.Void)
+}
+extension OlaMapNavigation.OlaNavigationProtocol {
+  public func didUpdateSpokenInstruction(_ instruction: OlaMapNavigation.OlaInstruction)
+  public func regionIsChanging(_ gesture: OlaMapNavigation.OlaMapGesture)
+  public func didUpdateVisualInstruction(_ instruction: OlaMapNavigation.OlaVisualInstruction)
+  public func didNavigationCompleted()
+  public func didUpdateBottomInstruction(_ instruction: OlaMapNavigation.OlaInstruction)
+  public func availableSteps(_ steps: [OlaMapNavigation.InstructionList])
+  public func didUpdateVisualDistance(_ distance: CoreLocation.CLLocationDistance, _ formattedString: Swift.String?)
+  public func willReroute(_ lastLocation: CoreLocation.CLLocation, _ tailCoordinate: CoreLocation.CLLocationCoordinate2D?)
+  public func didReroute(_ lastLocation: CoreLocation.CLLocation, _ tailCoordinate: CoreLocation.CLLocationCoordinate2D?)
+  public func didFailToRerouteWith(_ error: any Swift.Error)
+  public func navigationDidDismiss()
+  public func didReceiveInvalidRoute(type: OlaMapNavigation.RouteInValidType)
+  public func didArrivedInDestinationRegion()
+  public func didRequestETARefresh(_ location: CoreLocation.CLLocation, completion: @escaping (Swift.Result<OlaMapNavigation.EtaRefreshResponseModel, any Swift.Error>) -> Swift.Void)
+}
+public enum NavigationResult {
+  case success(_: UIKit.UIViewController)
+  case failed(OlaMapNavigation.OlaMapError)
+}
+public class OlaMapNavigationService {
+  public var subviewsManager: any OlaMapNavigation.OLAMapSubviewsProtocol
+  weak public var delegate: (any OlaMapNavigation.OlaNavigationProtocol)?
+  public var etaRefreshTimeInterval: Swift.Double {
+    get
+    set
+  }
+  public var isCompassViewHidden: Swift.Bool {
+    get
+    set
+  }
+  public var compassViewMargins: CoreFoundation.CGPoint {
+    get
+    set
+  }
+  public var compassViewPosition: Mapbox.MGLOrnamentPosition {
+    get
+    set
+  }
+  public var disableDefaultVoiceNavigation: Swift.Bool {
+    get
+    set
+  }
+  public func setDebugLogs(_ isEnabled: Swift.Bool)
+  public func setRegionRadius(_ value: Swift.Double)
+  public func setTrackUser(_ userId: Swift.String, fullName: Swift.String?, email: Swift.String?, mobile: Swift.String?)
+  public init(auth: OlaMapNavigation.AuthType, tileURL: Foundation.URL, env: OlaMapNavigation.ConfigEnvironment = .production)
+  public init(auth: OlaMapNavigation.AuthType, tileURL: Foundation.URL, env: OlaMapNavigation.ConfigEnvironment = .production, projectId: Swift.String = "NA", userId: Swift.String? = "NA")
+  public func setSimulation(_ state: Swift.Bool, _ simulationWithCSVFile: Swift.String? = nil)
+  public func setMaxZoom(_ value: Swift.Double)
+  public func setMinZoom(_ value: Swift.Double)
+  public func setReRouteThreshold(_ value: Swift.Double)
+  public var compassView: UIKit.UIView? {
+    get
+  }
+  @objc deinit
+  public func setStyle(_ tileURL: Foundation.URL)
+  public func routePreview(directionJSON: [[Swift.String : Any]], origin: CoreLocation.CLLocation, destination: CoreLocation.CLLocation, onCompletion: @escaping (_ vc: UIKit.UIViewController?) -> Swift.Void)
+  public func onUpdateNavigation(_ directionJSON: [Swift.String : Any])
+  public func navigate(jsonData: Foundation.Data, origin: CoreLocation.CLLocation, destination: CoreLocation.CLLocation, selectedRoute: Swift.Int = 0, mode: OlaMapNavigation.CommuteMode = .driving, mapDecorator: OlaMapNavigation.MapDecorator = MapDecorator(), onCompletion: @escaping (_ state: OlaMapNavigation.NavigationResult) -> Swift.Void)
+}
+extension OlaMapNavigation.OlaMapNavigationService {
+  public func recenterMap()
+  public func toggleOverview()
+  public func endNavigation()
+  public func stopSimulation()
+  public func getIncidentReportVC() -> UIKit.UIViewController
+  public func toggleVoiceNavigation()
+}
+extension Swift.Dictionary where Key == Swift.Int, Value : Foundation.NSExpression {
+  public func multiplied(by factor: Swift.Double) -> Swift.Dictionary<Key, Value>
+}
+extension UIKit.UIColor {
+  convenience public init?(hex: Swift.String)
+}
+extension Foundation.NSNotification.Name {
+  public static let olaMapDebugLogs: Foundation.Notification.Name
+  public static let olaMapInfoLogs: Foundation.Notification.Name
+}
+@_hasMissingDesignatedInitializers public class MapUtility {
+  public class func getNearestCoordinate(_ proposedCoordinate: CoreLocation.CLLocationCoordinate2D, coordinates: [CoreLocation.CLLocationCoordinate2D]) -> CoreLocation.CLLocationCoordinate2D?
+  public class func calculateStraightDistance(_ to: OlaMapNavigation.OlaCoordinate, from: OlaMapNavigation.OlaCoordinate) -> Swift.Double
+  public class func loadMockJSON(_ fileName: Swift.String) -> Foundation.Data?
+  public class func toDictionary(data: Foundation.Data) -> [Swift.String : Any]?
+  public class func getOlaMapVersion() -> Swift.String
+  public class func createArcPolyline(startPoint: CoreLocation.CLLocationCoordinate2D, toEnd endPoint: CoreLocation.CLLocationCoordinate2D, withAngle angle: Swift.Float) -> [CoreLocation.CLLocationCoordinate2D]
+  @objc deinit
+}
+extension OlaMapNavigation.MapUtility {
+  public class func decodePolyline(_ encodedPolyline: Swift.String, precision: Swift.Double = 10) -> [CoreLocation.CLLocationCoordinate2D]?
+  public class func getHeadingForDirection(from: CoreLocation.CLLocationCoordinate2D, to: CoreLocation.CLLocationCoordinate2D) -> Swift.Double
+  public class func getUncommonRoute(_ route1: [OlaMapNavigation.OlaCoordinate], _ route2: [OlaMapNavigation.OlaCoordinate]) -> ([OlaMapNavigation.OlaCoordinate], [OlaMapNavigation.OlaCoordinate])
+  public static func willIntersect(_ point11: OlaMapNavigation.OlaCoordinate, _ point12: OlaMapNavigation.OlaCoordinate, _ point21: OlaMapNavigation.OlaCoordinate, _ point22: OlaMapNavigation.OlaCoordinate) -> Swift.Bool
+}
+extension Foundation.Data {
+  public var prettyPrintedJSON: Foundation.NSString? {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class MapRouteHelper {
+  @objc deinit
+}
+public enum PolylineType : Swift.Int {
+  case solid
+  case dashed
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension OlaMapNavigation.OlaMapService {
+  public func showSegmentedPolyline(_ routeInfo: OlaMapNavigation.OlaMapNavigationResponseModel, onCompletion: (_ polylineID: [Swift.String]) -> Swift.Void)
+  public func showTrafficPolyline(encodedPolyline: Swift.String, travelAdvisory: Swift.String, onCompletion: (_ polylineID: [Swift.String]) -> Swift.Void)
+}
+extension OlaMapNavigation.OlaMapService {
+  public func showPolyline(identifier: Swift.String, _ type: OlaMapNavigation.PolylineType = .solid, _ coordinates: [OlaMapNavigation.OlaCoordinate], _ color: UIKit.UIColor? = nil, _ width: CoreFoundation.CGFloat? = nil, _ alpha: CoreFoundation.CGFloat? = nil, _ isTrafficSupported: Swift.Bool = false)
+  public func showPolyline(_ segment: OlaMapNavigation.OlaStepRoute)
+}
+public struct OlaMapNavigationResponseModel : Swift.Codable {
+  public let status: Swift.String?
+  public let geocodedWaypoints: [OlaMapNavigation.GeocodedWaypoint]?
+  public var routes: [OlaMapNavigation.OlaRoute]?
+  public let sourceFrom: Swift.String?
+  public let message: Swift.String?
+  public let exception: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct GeocodedWaypoint : Swift.Codable {
+  public let geocoderStatus: Swift.String?, placeID: Swift.String?
+  public let types: [Swift.String?]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct OlaRoute : Swift.Codable {
+  public let summary: Swift.String?
+  public var legs: [OlaMapNavigation.OlaLeg?]?
+  public let overviewPolyline: Swift.String?, travelAdvisory: Swift.String?
+  public let bounds: Swift.String?
+  public let copyrights: Swift.String?
+  public let warnings: [Swift.String]?
+  public let duration: Swift.Double?
+  public let distance: Swift.Double?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct OlaLeg : Swift.Codable {
+  public let steps: [OlaMapNavigation.Step]?
+  public let distance: Swift.Int?
+  public let readableDistance: Swift.String?
+  public let duration: Swift.Double?
+  public let readableDuration: Swift.String?
+  public let startLocation: OlaMapNavigation.DirectionLocation?, endLocation: OlaMapNavigation.DirectionLocation?
+  public let startAddress: Swift.String?, endAddress: Swift.String?
+  public var congestions: [OlaMapNavigation.OlaTrafficType]?
+  public var trafficModels: [OlaMapNavigation.OLATrafficModel]?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DirectionLocation : Swift.Codable {
+  public let lat: Swift.Double?, lng: Swift.Double?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Step : Swift.Codable {
+  public let instructions: Swift.String?
+  public let distance: Swift.Int?
+  public let readableDistance: Swift.String?
+  public let maneuver: OlaMapNavigation.Maneuver?
+  public let duration: Swift.Int?
+  public let readableDuration: Swift.String?
+  public let startLocation: OlaMapNavigation.DirectionLocation?, endLocation: OlaMapNavigation.DirectionLocation?
+  public let geometry: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum Maneuver : Swift.String, Swift.Codable {
+  case arrive
+  case depart
+  case enterRoundabout
+  case maneuverContinue
+  case turnLeft
+  case turnRight
+  case turnSharpLeft
+  case turnSharpRight
+  case turnSlightLeft
+  case turnSlightRight
+  case uTurn
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum OLAMapButton : Swift.CaseIterable {
+  case compass
+  public static func == (a: OlaMapNavigation.OLAMapButton, b: OlaMapNavigation.OLAMapButton) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public typealias AllCases = [OlaMapNavigation.OLAMapButton]
+  public static var allCases: [OlaMapNavigation.OLAMapButton] {
+    get
+  }
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @objc(MBNavigationView) @_Concurrency.MainActor(unsafe) open class NavigationView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @objc deinit
+}
+extension CoreLocation.CLLocation {
+  public var dictionaryRepresentation: [Swift.String : Any] {
+    get
+  }
+  convenience public init(dictionary: [Swift.String : Any])
+}
+extension UIKit.UIFont {
+  @objc dynamic public var adjustedFont: UIKit.UIFont {
+    @objc get
+  }
+}
+extension UIKit.UIDevice {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var isPluggedIn: Swift.Bool {
+    @objc get
+  }
+}
+public enum OlaMapStyle {
+  case lightEnglish
+  case darkEnglish
+  case lightKannada
+  case darkKannada
+  case lightHindi
+  case darkHindi
+  case lightMarathi
+  case darkMarathi
+  case lightTamil
+  case darkTamil
+  case lighTelgu
+  case darkTelgu
+  public func getURL(_ config: OlaMapNavigation.Configuration) -> Foundation.URL?
+  public static func == (a: OlaMapNavigation.OlaMapStyle, b: OlaMapNavigation.OlaMapStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(MBLaneView) @_Concurrency.MainActor(unsafe) open class LaneView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var primaryColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var secondaryColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(MBInstructionsBannerViewDelegate) public protocol InstructionsBannerViewDelegate {
+  @objc(didTapInstructionsBanner:) optional func didTapInstructionsBanner(_ sender: OlaMapNavigation.BaseInstructionsBannerView)
+  @objc(didDragInstructionsBanner:) optional func didDragInstructionsBanner(_ sender: OlaMapNavigation.BaseInstructionsBannerView)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @objc(MBInstructionsBannerView) @_Concurrency.MainActor(unsafe) open class InstructionsBannerView : OlaMapNavigation.BaseInstructionsBannerView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class BaseInstructionsBannerView : UIKit.UIControl {
+  @_Concurrency.MainActor(unsafe) weak public var delegate: (any OlaMapNavigation.InstructionsBannerViewDelegate)? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc(updateForVisualInstructionBanner:) @_Concurrency.MainActor(unsafe) public func update(for instruction: OlaMapDirectionFramework.VisualInstructionBanner?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor(unsafe) public func updateDistance(for currentStepProgress: OlaMapNavigation.RouteStepProgress)
+  @objc deinit
+}
+@objc public protocol Router : CoreLocation.CLLocationManagerDelegate {
+  @objc var locationManager: OlaMapNavigation.NavigationLocationManager! { get }
+  @objc var usesDefaultUserInterface: Swift.Bool { get }
+  @objc var routeProgress: OlaMapNavigation.RouteProgress { get }
+  @objc func endNavigation()
+  @objc var location: CoreLocation.CLLocation? { get }
+}
+extension OlaMapDirectionFramework.RouteStep {
+  public var isMotorway: Swift.Bool {
+    get
+  }
+  public var lastInstruction: OlaMapDirectionFramework.SpokenInstruction? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers open class NavigationRouteOptions : OlaMapDirectionFramework.RouteOptions {
+  @objc required public init(waypoints: [OlaMapDirectionFramework.Waypoint], profileIdentifier: OlaMapDirectionFramework.MBDirectionsProfileIdentifier? = .automobileAvoidingTraffic)
+  @objc convenience public init(locations: [CoreLocation.CLLocation], profileIdentifier: OlaMapDirectionFramework.MBDirectionsProfileIdentifier? = .automobileAvoidingTraffic)
+  @objc convenience public init(coordinates: [CoreLocation.CLLocationCoordinate2D], profileIdentifier: OlaMapDirectionFramework.MBDirectionsProfileIdentifier? = .automobileAvoidingTraffic)
+  @objc required public init?(coder decoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBNavigationMatchOptions) open class NavigationMatchOptions : OlaMapDirectionFramework.MatchOptions {
+  @objc required public init(waypoints: [OlaMapDirectionFramework.Waypoint], profileIdentifier: OlaMapDirectionFramework.MBDirectionsProfileIdentifier? = .automobileAvoidingTraffic)
+  @objc convenience public init(locations: [CoreLocation.CLLocation], profileIdentifier: OlaMapDirectionFramework.MBDirectionsProfileIdentifier? = .automobileAvoidingTraffic)
+  @objc convenience public init(coordinates: [CoreLocation.CLLocationCoordinate2D], profileIdentifier: OlaMapDirectionFramework.MBDirectionsProfileIdentifier? = .automobileAvoidingTraffic)
+  @objc required public init?(coder decoder: Foundation.NSCoder)
+  @objc deinit
+}
+public struct POIModel {
+  public var categoryName: Swift.String?
+  public var categoryType: Swift.String?
+  public var name: Swift.String?
+  public var placeId: Swift.String?
+  public var subClass: Swift.String?
+  public var url: Swift.String?
+  public var scr: Swift.String?
+  public let location: OlaMapNavigation.OlaCoordinate
+}
+@objc(MBRouteProgress) open class RouteProgress : ObjectiveC.NSObject {
+  @objc final public let route: OlaMapDirectionFramework.Route
+  @objc public var legIndex: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public var currentLeg: OlaMapDirectionFramework.RouteLeg {
+    @objc get
+  }
+  public var isFinalLeg: Swift.Bool {
+    get
+  }
+  @objc public var distanceTraveled: CoreLocation.CLLocationDistance {
+    @objc get
+  }
+  @objc public var durationRemaining: Foundation.TimeInterval {
+    @objc get
+  }
+  @objc public var fractionTraveled: Swift.Double {
+    @objc get
+  }
+  @objc public var distanceRemaining: CoreLocation.CLLocationDistance {
+    @objc get
+  }
+  @objc public var remainingWaypoints: [OlaMapDirectionFramework.Waypoint] {
+    @objc get
+  }
+  @objc public var currentLegProgress: OlaMapNavigation.RouteLegProgress
+  public typealias TimedCongestionLevel = (OlaMapDirectionFramework.CongestionLevel, Foundation.TimeInterval)
+  public var congestionTravelTimesSegmentsByStep: [[[OlaMapNavigation.RouteProgress.TimedCongestionLevel]]]
+  public var congestionTimesPerStep: [[[OlaMapDirectionFramework.CongestionLevel : Foundation.TimeInterval]]]
+  @objc public init(route: OlaMapDirectionFramework.Route, legIndex: Swift.Int = 0, spokenInstructionIndex: Swift.Int = 0)
+  public var averageCongestionLevelRemainingOnLeg: OlaMapDirectionFramework.CongestionLevel? {
+    get
+  }
+  @objc deinit
+}
+@objc(MBRouteLegProgress) open class RouteLegProgress : ObjectiveC.NSObject {
+  @objc final public let leg: OlaMapDirectionFramework.RouteLeg
+  @objc public var stepIndex: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc public var remainingSteps: [OlaMapDirectionFramework.RouteStep] {
+    @objc get
+  }
+  @objc public var distanceTraveled: CoreLocation.CLLocationDistance {
+    @objc get
+  }
+  @objc public var durationRemaining: Foundation.TimeInterval {
+    @objc get
+  }
+  @objc public var distanceRemaining: CoreLocation.CLLocationDistance {
+    @objc get
+  }
+  @objc public var fractionTraveled: Swift.Double {
+    @objc get
+  }
+  @objc public var userHasArrivedAtWaypoint: Swift.Bool
+  @objc public func stepBefore(_ step: OlaMapDirectionFramework.RouteStep) -> OlaMapDirectionFramework.RouteStep?
+  @objc public func stepAfter(_ step: OlaMapDirectionFramework.RouteStep) -> OlaMapDirectionFramework.RouteStep?
+  @objc public var priorStep: OlaMapDirectionFramework.RouteStep? {
+    @objc get
+  }
+  @objc public var currentStep: OlaMapDirectionFramework.RouteStep {
+    @objc get
+  }
+  @objc public var upComingStep: OlaMapDirectionFramework.RouteStep? {
+    @objc get
+  }
+  @objc public var followOnStep: OlaMapDirectionFramework.RouteStep? {
+    @objc get
+  }
+  @objc public func isCurrentStep(_ step: OlaMapDirectionFramework.RouteStep) -> Swift.Bool
+  @objc public var currentStepProgress: OlaMapNavigation.RouteStepProgress
+  @objc public init(leg: OlaMapDirectionFramework.RouteLeg, stepIndex: Swift.Int = 0, spokenInstructionIndex: Swift.Int = 0)
+  @objc public var nearbyCoordinates: [CoreLocation.CLLocationCoordinate2D] {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(MBRouteStepProgress) open class RouteStepProgress : ObjectiveC.NSObject {
+  @objc final public let step: OlaMapDirectionFramework.RouteStep
+  @objc public var distanceTraveled: Swift.Double
+  @objc public var userDistanceToManeuverLocation: Swift.Double
+  @objc public var distanceRemaining: CoreLocation.CLLocationDistance {
+    @objc get
+  }
+  @objc public var fractionTraveled: Swift.Double {
+    @objc get
+  }
+  @objc public var durationRemaining: Foundation.TimeInterval {
+    @objc get
+  }
+  @objc public init(step: OlaMapDirectionFramework.RouteStep, spokenInstructionIndex: Swift.Int = 0)
+  @objc public var intersectionsIncludingUpcomingManeuverIntersection: [OlaMapDirectionFramework.Intersection]?
+  @objc public var upcomingIntersection: OlaMapDirectionFramework.Intersection? {
+    @objc get
+  }
+  @objc public var intersectionIndex: Swift.Int
+  @objc public var currentIntersection: OlaMapDirectionFramework.Intersection? {
+    @objc get
+  }
+  @objc public var intersectionDistances: Swift.Array<CoreLocation.CLLocationDistance>?
+  public var userDistanceToUpcomingIntersection: CoreLocation.CLLocationDistance?
+  @objc public var visualInstructionIndex: Swift.Int
+  @objc public var remainingVisualInstructions: [OlaMapDirectionFramework.VisualInstructionBanner]? {
+    @objc get
+  }
+  @objc public var spokenInstructionIndex: Swift.Int
+  @objc public var remainingSpokenInstructions: [OlaMapDirectionFramework.SpokenInstruction]? {
+    @objc get
+  }
+  @objc public var currentSpokenInstruction: OlaMapDirectionFramework.SpokenInstruction? {
+    @objc get
+  }
+  @objc public var currentVisualInstruction: OlaMapDirectionFramework.VisualInstructionBanner? {
+    @objc get
+  }
+  @objc deinit
+}
+@available(iOS 12.0, *)
+@objc(MBCarPlayActivity) public enum CarPlayActivity : Swift.Int {
+  case browsing
+  case previewing
+  case navigating
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 12.0, *)
+@objc(MBCarPlayManagerDelegate) public protocol CarPlayManagerDelegate {
+  @objc(carPlayManager:leadingNavigationBarButtonsWithTraitCollection:inTemplate:forActivity:) optional func carPlayManager(_ carPlayManager: OlaMapNavigation.CarPlayManager, leadingNavigationBarButtonsCompatibleWith traitCollection: UIKit.UITraitCollection, in template: CarPlay.CPTemplate, for activity: OlaMapNavigation.CarPlayActivity) -> [CarPlay.CPBarButton]?
+  @objc(carPlayManager:trailingNavigationBarButtonsWithTraitCollection:inTemplate:forActivity:) optional func carPlayManager(_ carPlayManager: OlaMapNavigation.CarPlayManager, trailingNavigationBarButtonsCompatibleWith traitCollection: UIKit.UITraitCollection, in template: CarPlay.CPTemplate, for activity: OlaMapNavigation.CarPlayActivity) -> [CarPlay.CPBarButton]?
+  @objc(carPlayManager:mapButtonsCompatibleWithTraitCollection:inTemplate:forActivity:) optional func carPlayManager(_ carplayManager: OlaMapNavigation.CarPlayManager, mapButtonsCompatibleWith traitCollection: UIKit.UITraitCollection, in template: CarPlay.CPTemplate, for activity: OlaMapNavigation.CarPlayActivity) -> [CarPlay.CPMapButton]?
+  @objc(carPlayManager:routeControllerAlongRoute:) optional func carPlayManager(_ carPlayManager: OlaMapNavigation.CarPlayManager, routeControllerAlong route: OlaMapDirectionFramework.Route) -> OlaMapNavigation.RouteController
+  @objc(carPlayManager:searchTemplate:updatedSearchText:completionHandler:) optional func carPlayManager(_ carPlayManager: OlaMapNavigation.CarPlayManager, searchTemplate: CarPlay.CPSearchTemplate, updatedSearchText searchText: Swift.String, completionHandler: @escaping ([CarPlay.CPListItem]) -> Swift.Void)
+  @objc(carPlayManager:searchTemplate:selectedResult:completionHandler:) optional func carPlayManager(_ carPlayManager: OlaMapNavigation.CarPlayManager, searchTemplate: CarPlay.CPSearchTemplate, selectedResult item: CarPlay.CPListItem, completionHandler: @escaping () -> Swift.Void)
+  @objc(carPlayManager:didBeginNavigationWithRouteController:) func carPlayManager(_ carPlayManager: OlaMapNavigation.CarPlayManager, didBeginNavigationWith routeController: OlaMapNavigation.RouteController)
+  @objc func carPlayManagerDidEndNavigation(_ carPlayManager: OlaMapNavigation.CarPlayManager)
+  @objc optional func carplayManagerShouldDisableIdleTimer(_ carPlayManager: OlaMapNavigation.CarPlayManager) -> Swift.Bool
+}
+@_inheritsConvenienceInitializers @available(iOS 12.0, *)
+@objc(MBCarPlayManager) public class CarPlayManager : ObjectiveC.NSObject {
+  public var interfaceController: CarPlay.CPInterfaceController? {
+    get
+  }
+  public var carWindow: UIKit.UIWindow? {
+    get
+  }
+  public var routeController: OlaMapNavigation.RouteController? {
+    get
+  }
+  @objc weak public var delegate: (any OlaMapNavigation.CarPlayManagerDelegate)?
+  @objc public var simulatesLocations: Swift.Bool
+  @objc public var simulatedSpeedMultiplier: Swift.Double
+  @objc(sharedManager) public static var shared: OlaMapNavigation.CarPlayManager
+  public var mainMapTemplate: CarPlay.CPMapTemplate? {
+    get
+  }
+  weak public var currentNavigator: OlaMapNavigation.CarPlayNavigationViewController? {
+    get
+  }
+  public static let CarPlayWaypointKey: Swift.String
+  public static func resetSharedInstance()
+  @objc public var isConnectedToCarPlay: Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayManager : CarPlay.CPApplicationDelegate {
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didConnectCarInterfaceController interfaceController: CarPlay.CPInterfaceController, to window: CarPlay.CPWindow)
+  @objc dynamic public func application(_ application: UIKit.UIApplication, didDisconnectCarInterfaceController interfaceController: CarPlay.CPInterfaceController, from window: CarPlay.CPWindow)
+}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayManager : CarPlay.CPInterfaceControllerDelegate {
+  @objc dynamic public func templateWillAppear(_ template: CarPlay.CPTemplate, animated: Swift.Bool)
+  @objc dynamic public func templateDidAppear(_ template: CarPlay.CPTemplate, animated: Swift.Bool)
+  @objc dynamic public func templateWillDisappear(_ template: CarPlay.CPTemplate, animated: Swift.Bool)
+}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayManager : CarPlay.CPListTemplateDelegate {
+  @objc dynamic public func listTemplate(_ listTemplate: CarPlay.CPListTemplate, didSelect item: CarPlay.CPListItem, completionHandler: @escaping () -> Swift.Void)
+  public func calculateRouteAndStart(from fromWaypoint: OlaMapDirectionFramework.Waypoint? = nil, to toWaypoint: OlaMapDirectionFramework.Waypoint, completionHandler: @escaping () -> Swift.Void)
+}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayManager : CarPlay.CPMapTemplateDelegate {
+  @objc dynamic public func mapTemplate(_ mapTemplate: CarPlay.CPMapTemplate, startedTrip trip: CarPlay.CPTrip, using routeChoice: CarPlay.CPRouteChoice)
+  @objc dynamic public func mapTemplate(_ mapTemplate: CarPlay.CPMapTemplate, selectedPreviewFor trip: CarPlay.CPTrip, using routeChoice: CarPlay.CPRouteChoice)
+  @objc dynamic public func mapTemplateDidCancelNavigation(_ mapTemplate: CarPlay.CPMapTemplate)
+  @objc dynamic public func mapTemplateDidBeginPanGesture(_ mapTemplate: CarPlay.CPMapTemplate)
+  @objc dynamic public func mapTemplate(_ mapTemplate: CarPlay.CPMapTemplate, didEndPanGestureWithVelocity velocity: CoreFoundation.CGPoint)
+  @objc dynamic public func mapTemplateWillDismissPanningInterface(_ mapTemplate: CarPlay.CPMapTemplate)
+  @objc dynamic public func mapTemplate(_ mapTemplate: CarPlay.CPMapTemplate, didUpdatePanGestureWithTranslation translation: CoreFoundation.CGPoint, velocity: CoreFoundation.CGPoint)
+  @objc dynamic public func mapTemplate(_ mapTemplate: CarPlay.CPMapTemplate, panWith direction: CarPlay.CPMapTemplate.PanDirection)
+}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayManager : OlaMapNavigation.CarPlayNavigationDelegate {
+  @objc dynamic public func carPlayNavigationViewControllerDidArrive(_: OlaMapNavigation.CarPlayNavigationViewController)
+  @objc dynamic public func carPlayNavigationViewControllerDidDismiss(_ carPlayNavigationViewController: OlaMapNavigation.CarPlayNavigationViewController, byCanceling canceled: Swift.Bool)
+}
+@_inheritsConvenienceInitializers @objc(MBNavigationMapView) @_Concurrency.MainActor(unsafe) open class NavigationMapView : Mapbox.MGLMapView, UIKit.UIGestureRecognizerDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public var defaultAltitude: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var isWalking: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var isSolidPolylineType: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var zoomedOutMotorwayAltitude: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var longManeuverDistance: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var tapGestureDistanceThreshold: CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) weak public var courseTrackingDelegate: (any OlaMapNavigation.NavigationMapViewCourseTrackingDelegate)?
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficUnknownColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficLowColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficModerateColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficHeavyColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficSevereColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var routeLineColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var routeLineAlternativeColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var routeLineCasingColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var routeLineCasingAlternativeColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var maneuverArrowColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var maneuverArrowStrokeColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var showsUserLocation: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var tracksUserCourse: Swift.Bool {
+    get
+    set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var userCourseView: OlaMapNavigation.UserPuckCourseView? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder decoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect, styleURL: Foundation.URL?)
+  @_Concurrency.MainActor(unsafe) convenience public init(frame: CoreFoundation.CGRect, styleURL: Foundation.URL?, config: OlaMapNavigation.MNConfig? = nil)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func anchorPoint(forGesture gesture: UIKit.UIGestureRecognizer) -> CoreFoundation.CGPoint
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func mapViewDidFinishRenderingFrameFullyRendered(_ fullyRendered: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) public func updateCourseTracking(location: CoreLocation.CLLocation?, camera: Mapbox.MGLMapCamera? = nil, animated: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public static let defaultPadding: UIKit.UIEdgeInsets
+  @objc @_Concurrency.MainActor(unsafe) public func showcase(_ routes: [OlaMapDirectionFramework.Route], padding: UIKit.UIEdgeInsets = NavigationMapView.defaultPadding, animated: Swift.Bool = false)
+  @objc @_Concurrency.MainActor(unsafe) public func showRoutes(_ routes: [OlaMapDirectionFramework.Route], legIndex: Swift.Int = 0)
+  @objc @_Concurrency.MainActor(unsafe) public func removeRoutes()
+  @objc @_Concurrency.MainActor(unsafe) public func showWaypoints(_ route: OlaMapDirectionFramework.Route, legIndex: Swift.Int = 0)
+  @objc @_Concurrency.MainActor(unsafe) public func removeWaypoints()
+  @objc @_Concurrency.MainActor(unsafe) public func addArrow(route: OlaMapDirectionFramework.Route, legIndex: Swift.Int, stepIndex: Swift.Int)
+  @objc @_Concurrency.MainActor(unsafe) public func removeArrow()
+  @objc @_Concurrency.MainActor(unsafe) public func localizeLabels()
+  @objc @_Concurrency.MainActor(unsafe) public func showVoiceInstructionsOnMap(route: OlaMapDirectionFramework.Route)
+  @objc @_Concurrency.MainActor(unsafe) public func setOverheadCameraView(from userLocation: CoreLocation.CLLocationCoordinate2D, along coordinates: [CoreLocation.CLLocationCoordinate2D], for bounds: UIKit.UIEdgeInsets)
+  @objc @_Concurrency.MainActor(unsafe) public func recenterMap()
+}
+@objc(MBNavigationMapViewCourseTrackingDelegate) public protocol NavigationMapViewCourseTrackingDelegate {
+  @objc(navigationMapViewDidStartTrackingCourse:) optional func navigationMapViewDidStartTrackingCourse(_ mapView: OlaMapNavigation.NavigationMapView)
+  @objc(navigationMapViewDidStopTrackingCourse:) optional func navigationMapViewDidStopTrackingCourse(_ mapView: OlaMapNavigation.NavigationMapView)
+}
+@objc(MBFeedbackItem) public class FeedbackItem : ObjectiveC.NSObject {
+  @objc public var title: Swift.String
+  @objc public var image: UIKit.UIImage
+  @objc public var feedbackType: OlaMapNavigation.FeedbackType
+  @objc public init(title: Swift.String, image: UIKit.UIImage, feedbackType: OlaMapNavigation.FeedbackType)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBManeuversStyleKit) public class ManeuversStyleKit : ObjectiveC.NSObject {
+  @objc dynamic public class func drawArrow180right(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawArrowright(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawArrowslightright(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawArrowstraight(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawArrowsharpright(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawArrive(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawStarting(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawDestination(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawMerge(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), secondaryColor: UIKit.UIColor = UIColor(red: 0.618, green: 0.618, blue: 0.618, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawFork(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), secondaryColor: UIKit.UIColor = UIColor(red: 0.618, green: 0.618, blue: 0.618, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawOfframp(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), secondaryColor: UIKit.UIColor = UIColor(red: 0.618, green: 0.618, blue: 0.618, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawArriveright(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc dynamic public class func drawRoundabout(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), secondaryColor: UIKit.UIColor = UIColor(red: 0.618, green: 0.618, blue: 0.618, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32), roundabout_angle: CoreFoundation.CGFloat = 90, roundabout_radius: CoreFoundation.CGFloat = 6.5)
+  @objc dynamic public class func drawArriveright2(frame targetFrame: CoreFoundation.CGRect = CGRect(x: 0, y: 0, width: 32, height: 32), resizing: OlaMapNavigation.ManeuversStyleKit.ResizingBehavior = .aspectFit, primaryColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), size: CoreFoundation.CGSize = CGSize(width: 32, height: 32))
+  @objc(ManeuversStyleKitResizingBehavior) public enum ResizingBehavior : Swift.Int {
+    case aspectFit
+    case aspectFill
+    case stretch
+    case center
+    public func apply(rect: CoreFoundation.CGRect, target: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension OlaMapDirectionFramework.CongestionLevel {
+  @available(iOS 12.0, *)
+  public var asCPTimeRemainingColor: CarPlay.CPTimeRemainingColor {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @IBDesignable @objc(MBDashedLineView) @_Concurrency.MainActor(unsafe) public class DashedLineView : OlaMapNavigation.LineView {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var dashedLength: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var dashedGap: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBStyleKitMarker) public class StyleKitMarker : ObjectiveC.NSObject {
+  @objc dynamic public class func drawMarker(frame: CoreFoundation.CGRect = CGRect(x: 57, y: 27, width: 50, height: 50), innerColor: UIKit.UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), shadowColor: UIKit.UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), pinColor: UIKit.UIColor = UIColor(red: 0.290, green: 0.565, blue: 0.886, alpha: 1.000), strokeColor: UIKit.UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000))
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct OlaStop {
+  public init(stopId: Swift.String, imageName: Swift.String, coordinate: OlaMapNavigation.OlaCoordinate)
+}
+extension OlaMapNavigation.BottomBannerView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+}
+@objc(MBStyleType) public enum StyleType : Swift.Int, Swift.CustomStringConvertible {
+  case day
+  case night
+  public init?(description: Swift.String)
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum OlaTrafficType : Swift.Codable {
+  case LOW
+  case JAM
+  case HEAVY
+  case MODERATE
+  public var text: Swift.String {
+    get
+  }
+  public func color(config: OlaMapNavigation.Configuration?) -> UIKit.UIColor
+  public static func == (a: OlaMapNavigation.OlaTrafficType, b: OlaMapNavigation.OlaTrafficType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public var hashValue: Swift.Int {
+    get
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct EtaRefreshResponseModel : Swift.Codable {
+  public let duration: Swift.String?
+  public let readableDuration: Swift.String?
+  public let travelAdvisory: Swift.String?
+  public init(duration: Swift.String? = nil, readableDuration: Swift.String? = nil, travelAdvisory: Swift.String? = nil)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(MBDataCache) public class DataCache : ObjectiveC.NSObject, OlaMapNavigation.BimodalDataCache {
+  @objc override dynamic public init()
+  @objc public func store(_ data: Foundation.Data, forKey key: Swift.String, toDisk: Swift.Bool, completion: OlaMapNavigation.CompletionHandler?)
+  @objc public func data(forKey key: Swift.String?) -> Foundation.Data?
+  @objc public func clearMemory()
+  @objc public func clearDisk(completion: OlaMapNavigation.CompletionHandler?)
+  @objc deinit
+}
+extension UIKit.UIImage {
+  public func roundedWithBorder(width: CoreFoundation.CGFloat, color: UIKit.UIColor) -> UIKit.UIImage?
+}
+public enum OlaMapGesture {
+  case pan
+  case oneFingerZoom
+  case pinch
+  case rotate
+  case tilt
+  case zoomIn
+  case zoomOut
+  case cancelled
+  case resetNorth
+  case programatic
+  case unknown
+  public static func == (a: OlaMapNavigation.OlaMapGesture, b: OlaMapNavigation.OlaMapGesture) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension CoreFoundation.CGPoint {
+  public func distance(to: CoreFoundation.CGPoint) -> CoreFoundation.CGFloat
+}
+@objc(MBFeedbackType) public enum FeedbackType : Swift.Int, Swift.CustomStringConvertible {
+  case general
+  case accident
+  case hazard
+  case roadClosed
+  case notAllowed
+  case missingRoad
+  case missingExit
+  case routingError
+  case confusingInstruction
+  case reportTraffic
+  case mapIssue
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(MBFeedbackSource) public enum FeedbackSource : Swift.Int, Swift.CustomStringConvertible {
+  case user
+  case reroute
+  case unknown
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(MBStyleManagerDelegate) public protocol StyleManagerDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func locationFor(styleManager: OlaMapNavigation.StyleManager) -> CoreLocation.CLLocation?
+  @objc optional func styleManager(_ styleManager: OlaMapNavigation.StyleManager, didApply style: OlaMapNavigation.Style)
+  @objc optional func styleManagerDidRefreshAppearance(_ styleManager: OlaMapNavigation.StyleManager)
+}
+@objc(MBStyleManager) open class StyleManager : ObjectiveC.NSObject {
+  @objc weak public var delegate: (any OlaMapNavigation.StyleManagerDelegate)?
+  @objc public var automaticallyAdjustsStyleForTimeOfDay: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var styles: [OlaMapNavigation.Style] {
+    @objc get
+    @objc set
+  }
+  required public init(_ delegate: any OlaMapNavigation.StyleManagerDelegate)
+  @objc deinit
+}
+extension OlaMapNavigation.OlaMapService {
+  public func isOlaAnnotation(byId id: Swift.String) -> Swift.Bool
+  public func setCustomAnnotationMarker(at olaCoordinates: [OlaMapNavigation.OlaCoordinate], annotationView: OlaMapNavigation.OlaAnnotationView)
+  public func setAnnotationMarker(at olaCoordinates: OlaMapNavigation.OlaCoordinate, annotationView: OlaMapNavigation.OlaAnnotationView, identifier: Swift.String)
+  public func removeAnnotations()
+  public func removeAnnotation(by id: Swift.String)
+  public func updateAnnotationMarker(at: OlaMapNavigation.OlaCoordinate, annotationView: OlaMapNavigation.OlaAnnotationView, identifier: Swift.String)
+}
+public var screenWidth: CoreFoundation.CGFloat {
+  get
+}
+public var screenHeight: CoreFoundation.CGFloat {
+  get
+}
+public enum GeofenceRegionType {
+  case circular(radius: Swift.Double)
+  case rectanguler(length: Swift.Double, breadth: Swift.Double)
+  case none
+}
+public struct OlaGeofenceRegion {
+  public let uniqueName: Swift.String
+  public let centerPoint: CoreLocation.CLLocationCoordinate2D
+  public let type: OlaMapNavigation.GeofenceRegionType
+  public let notifiyOnEntry: Swift.Bool
+  public let notifiyOnExit: Swift.Bool
+  public init(_ name: Swift.String, _ centerPoint: OlaMapNavigation.OlaCoordinate, _ type: OlaMapNavigation.GeofenceRegionType, notifyOnEntry: Swift.Bool = true, notifyOnExit: Swift.Bool = true)
+  public init(_ region: CoreLocation.CLRegion)
+}
+@objc @_inheritsConvenienceInitializers public class OlaGeofence : ObjectiveC.NSObject {
+  public var handlerOnExit: ((_ region: OlaMapNavigation.OlaGeofenceRegion) -> Swift.Void)?
+  public var handlerOnEnter: ((_ region: OlaMapNavigation.OlaGeofenceRegion) -> Swift.Void)?
+  public func monitor(_ olaRegion: OlaMapNavigation.OlaGeofenceRegion)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension OlaMapNavigation.OlaGeofence : CoreLocation.CLLocationManagerDelegate {
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didExitRegion region: CoreLocation.CLRegion)
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didEnterRegion region: CoreLocation.CLRegion)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class CustomAnnotationView : OlaMapNavigation.OlaAnnotationView {
+  @_Concurrency.MainActor(unsafe) convenience public init(identifier: Swift.String, image: UIKit.UIImage?, color: UIKit.UIColor? = nil, opacity: CoreFoundation.CGFloat? = nil, markerView: UIKit.UIView? = nil)
+  @_Concurrency.MainActor(unsafe) convenience public init(identifier: Swift.String, image: UIKit.UIImage?, color: UIKit.UIColor? = nil, opacity: CoreFoundation.CGFloat? = nil, markerView: UIKit.UIView? = nil, rotation: Swift.Double)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func rotate(_ angle: Swift.Double)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func setSelected(_ selected: Swift.Bool, animated: Swift.Bool)
+  @objc deinit
+}
+extension UIKit.UIColor {
+  public static let olaGreen: UIKit.UIColor
+  public static let lightBlue: UIKit.UIColor
+}
+extension UIKit.UIColor {
+  convenience public init(hexString: Swift.String, alpha: CoreFoundation.CGFloat = 1.0)
+  public func toHexString() -> Swift.String
+}
+public enum WalkingPolylineIconType {
+  case defaultType
+  case custom(_: UIKit.UIImage, _: UIKit.UIImage)
+}
+public struct PolylineDecorator {
+  public let strokeColor: UIKit.UIColor
+  public let strokWidth: Swift.Double
+  public let strokeAlpha: Swift.Double
+  public init(strokeColor: UIKit.UIColor = .black, strokWidth: Swift.Double = 3.5, strokeAlpha: Swift.Double = 0.5)
+}
+public struct PopupDecoratedModel {
+  public let font: UIKit.UIFont
+  public let labelActiveColor: UIKit.UIColor
+  public let labelInactiveColor: UIKit.UIColor
+  public let activeBackgroudColor: UIKit.UIColor
+  public let inactiveBackgroundColor: UIKit.UIColor
+  public let height: CoreFoundation.CGFloat
+  public let cornerRadius: CoreFoundation.CGFloat
+  public init(font: UIKit.UIFont = UIFont.systemFont(ofSize: 16, weight: .medium), labelActiveColor: UIKit.UIColor = .black, labelInactiveColor: UIKit.UIColor = .white, activeBackgroudColor: UIKit.UIColor = .white, inactiveBackgroundColor: UIKit.UIColor = UIColor(hex: "#687986") ?? .gray, height: CoreFoundation.CGFloat = 32.0, cornerRadius: CoreFoundation.CGFloat = 4.0)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class PopupView : OlaMapNavigation.OlaAnnotationView {
+  @_Concurrency.MainActor(unsafe) convenience public init(identifier: Swift.String, model: OlaMapNavigation.PopupDecoratedModel, text: Swift.String, isActive: Swift.Bool)
+  @objc deinit
+}
+extension Foundation.URLRequest {
+  public func cURL(pretty: Swift.Bool = false) -> Swift.String
+}
+@_inheritsConvenienceInitializers @IBDesignable @objc(MBManeuverView) @_Concurrency.MainActor(unsafe) open class ManeuverView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var primaryColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var secondaryColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var isStart: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var isEnd: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var visualInstruction: OlaMapDirectionFramework.VisualInstruction? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var drivingSide: OlaMapDirectionFramework.DrivingSide {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension OlaMapNavigation.OlaMapService {
+  public func recenterMap()
+  public func setCamera(at coordinates: OlaMapNavigation.OlaCoordinate, _ zoom: Swift.Double = 16.0)
+  public func setCamera(_ coordinate: CoreLocation.CLLocationCoordinate2D)
+  public func setCamera(at coordinate: OlaMapNavigation.OlaCoordinate, zoomLevel: Swift.Double?)
+  public func setMapCamera(_ altitude: Swift.Double, _ pitch: Swift.Double, heading: Swift.Double)
+  public func setMapCamera(_ coordinate: OlaMapNavigation.OlaCoordinate, _ zoom: Swift.Double, _ heading: Swift.Double, _ altitude: Swift.Double)
+  public func setMapCamera(_ coordinates: [OlaMapNavigation.OlaCoordinate], isAnimated: Swift.Bool?)
+  public func setMapCamera(_ coordinates: [OlaMapNavigation.OlaCoordinate], _ edgePadding: UIKit.UIEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30))
+  public func setMapCamera(coordinate: OlaMapNavigation.OlaCoordinate, _ edgePadding: UIKit.UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+}
+extension Foundation.Bundle {
+  public var backgroundModes: Swift.Set<Swift.String> {
+    get
+  }
+}
+@objc public protocol StatusViewDelegate {
+  @objc optional func statusView(_ statusView: OlaMapNavigation.StatusView, valueChangedTo value: Swift.Double)
+}
+@_inheritsConvenienceInitializers @IBDesignable @objc(MBStatusView) @_Concurrency.MainActor(unsafe) public class StatusView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: (any OlaMapNavigation.StatusViewDelegate)?
+  @objc @_Concurrency.MainActor(unsafe) public var canChangeValue: Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public func show(_ title: Swift.String, showSpinner: Swift.Bool, interactive: Swift.Bool = false)
+  @_Concurrency.MainActor(unsafe) public func hide(delay: Foundation.TimeInterval = 0, animated: Swift.Bool = true)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @objc(MBLanesView) @_Concurrency.MainActor(unsafe) open class LanesView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @objc(updateForVisualInstructionBanner:) @_Concurrency.MainActor(unsafe) public func update(for visualInstruction: OlaMapDirectionFramework.VisualInstructionBanner?)
+  @_Concurrency.MainActor(unsafe) public func show(animated: Swift.Bool = true)
+  @_Concurrency.MainActor(unsafe) public func hide()
+  @objc deinit
+}
+extension Mapbox.MGLStyle {
+  @objc dynamic public class var navigationGuidanceDayStyleURL: Foundation.URL {
+    @objc get
+  }
+  @objc dynamic public class var navigationGuidanceNightStyleURL: Foundation.URL {
+    @objc get
+  }
+  @objc dynamic public class func navigationGuidanceDayStyleURL(version: Swift.Int) -> Foundation.URL
+  @objc dynamic public class func navigationGuidanceNightStyleURL(version: Swift.Int) -> Foundation.URL
+  @objc dynamic public class var navigationPreviewDayStyleURL: Foundation.URL {
+    @objc get
+  }
+  @objc dynamic public class var navigationPreviewNightStyleURL: Foundation.URL {
+    @objc get
+  }
+  @objc dynamic public class func navigationPreviewDayStyleURL(version: Swift.Int) -> Foundation.URL
+  @objc dynamic public class func navigationPreviewNightStyleURL(version: Swift.Int) -> Foundation.URL
+}
+public enum RouteInValidType : Swift.String {
+  case emptyPolylineCoordinate
+  case invalidStepDistance
+  case emptyLegs
+  case emptySteps
+  case none
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(MBNextInstructionLabel) @_Concurrency.MainActor(unsafe) open class NextInstructionLabel : OlaMapNavigation.InstructionLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @objc(MBNextBannerView) @_Concurrency.MainActor(unsafe) open class NextBannerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @objc(updateForVisualInstructionBanner:) @_Concurrency.MainActor(unsafe) public func update(for visualInstruction: OlaMapDirectionFramework.VisualInstructionBanner?)
+  @_Concurrency.MainActor(unsafe) public func show()
+  @_Concurrency.MainActor(unsafe) public func hide()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class OlaDirectionBrdige {
+  public static func intoMapboxCompatible(_ stringOlaBackendAPIResponse: Foundation.Data, routeIndex: Swift.Int) -> Foundation.Data
+  @objc deinit
+}
+public enum UserPuckIconType {
+  case arrowIcon
+  case circularSolidDot
+  case custom(UIKit.UIImage, CoreFoundation.CGRect)
+  case testAppIcon
+}
+public enum DestinatioIconType {
+  case scoterIcon
+  case dropIcon
+  case custom(UIKit.UIImage)
+}
+public struct MapDecorator {
+  public let userPuckIcon: OlaMapNavigation.UserPuckIconType
+  public let destinationIcon: OlaMapNavigation.DestinatioIconType
+  public let polylineType: OlaMapNavigation.PolylineType
+  public let isAllowTilt: Swift.Bool
+  public let distanceToDrawTraffic: Swift.Double
+  public let isVoiceNavigationEnabled: Swift.Bool
+  public init(userPuckIcon: OlaMapNavigation.UserPuckIconType = .arrowIcon, destinationIcon: OlaMapNavigation.DestinatioIconType = .dropIcon, polylineType: OlaMapNavigation.PolylineType = .solid, isAllowTilt: Swift.Bool = true, distanceToDrawTraffic: Swift.Double = 10000.0, isVoiceNavigationEnabled: Swift.Bool = false)
+}
+@_inheritsConvenienceInitializers @objc(MBNavigationLocationManager) open class NavigationLocationManager : CoreLocation.CLLocationManager, Foundation.NSCopying {
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Swift.String {
+  public var nonEmptyString: Swift.String? {
+    get
+  }
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func makeToast(_ message: Swift.String?, duration: Foundation.TimeInterval = ToastManager.shared.duration, position: OlaMapNavigation.ToastPosition = ToastManager.shared.position, title: Swift.String? = nil, image: UIKit.UIImage? = nil, style: OlaMapNavigation.ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public func makeToast(_ message: Swift.String?, duration: Foundation.TimeInterval = ToastManager.shared.duration, point: CoreFoundation.CGPoint, title: Swift.String?, image: UIKit.UIImage?, style: OlaMapNavigation.ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Swift.Bool) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func showToast(_ toast: UIKit.UIView, duration: Foundation.TimeInterval = ToastManager.shared.duration, position: OlaMapNavigation.ToastPosition = ToastManager.shared.position, completion: ((_ didTap: Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public func showToast(_ toast: UIKit.UIView, duration: Foundation.TimeInterval = ToastManager.shared.duration, point: CoreFoundation.CGPoint, completion: ((_ didTap: Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public func hideToast()
+  @_Concurrency.MainActor(unsafe) public func hideToast(_ toast: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) public func hideAllToasts(includeActivity: Swift.Bool = false, clearQueue: Swift.Bool = true)
+  @_Concurrency.MainActor(unsafe) public func clearToastQueue()
+  @_Concurrency.MainActor(unsafe) public func makeToastActivity(_ position: OlaMapNavigation.ToastPosition)
+  @_Concurrency.MainActor(unsafe) public func makeToastActivity(_ point: CoreFoundation.CGPoint)
+  @_Concurrency.MainActor(unsafe) public func hideToastActivity()
+  @_Concurrency.MainActor(unsafe) public func toastViewForMessage(_ message: Swift.String?, title: Swift.String?, image: UIKit.UIImage?, style: OlaMapNavigation.ToastStyle) throws -> UIKit.UIView
+}
+public struct ToastStyle {
+  public init()
+  public var backgroundColor: UIKit.UIColor
+  public var titleColor: UIKit.UIColor
+  public var messageColor: UIKit.UIColor
+  public var maxWidthPercentage: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  public var maxHeightPercentage: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  public var horizontalPadding: CoreFoundation.CGFloat
+  public var verticalPadding: CoreFoundation.CGFloat
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var titleFont: UIKit.UIFont
+  public var messageFont: UIKit.UIFont
+  public var titleAlignment: UIKit.NSTextAlignment
+  public var messageAlignment: UIKit.NSTextAlignment
+  public var titleNumberOfLines: Swift.Int
+  public var messageNumberOfLines: Swift.Int
+  public var displayShadow: Swift.Bool
+  public var shadowColor: UIKit.UIColor
+  public var shadowOpacity: Swift.Float {
+    get
+    set
+  }
+  public var shadowRadius: CoreFoundation.CGFloat
+  public var shadowOffset: CoreFoundation.CGSize
+  public var imageSize: CoreFoundation.CGSize
+  public var activitySize: CoreFoundation.CGSize
+  public var fadeDuration: Swift.Double
+  public var activityIndicatorColor: UIKit.UIColor
+  public var activityBackgroundColor: UIKit.UIColor
+}
+@_hasMissingDesignatedInitializers public class ToastManager {
+  public static let shared: OlaMapNavigation.ToastManager
+  public var style: OlaMapNavigation.ToastStyle
+  public var isTapToDismissEnabled: Swift.Bool
+  public var isQueueEnabled: Swift.Bool
+  public var duration: Swift.Double
+  public var position: OlaMapNavigation.ToastPosition
+  @objc deinit
+}
+public enum ToastPosition {
+  case top
+  case center
+  case bottom
+  public static func == (a: OlaMapNavigation.ToastPosition, b: OlaMapNavigation.ToastPosition) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension OlaMapDirectionFramework.RouteOptions {
+  public func without(waypoint: OlaMapDirectionFramework.Waypoint) -> OlaMapDirectionFramework.RouteOptions
+}
+@objc(MBMapboxVoiceController) open class MapboxVoiceController : OlaMapNavigation.RouteVoiceController, AVFAudio.AVAudioPlayerDelegate {
+  @objc public var timeoutIntervalForRequest: Swift.Double
+  @objc public var stepsAheadToCache: Swift.Int
+  @objc public var audioPlayer: AVFAudio.AVAudioPlayer?
+  @objc public init(speechClient: OlaMapNavigation.SpeechSynthesizer = SpeechSynthesizer(accessToken: "accessToken"), dataCache: any OlaMapNavigation.BimodalDataCache = DataCache(), audioPlayerType: AVFAudio.AVAudioPlayer.Type? = nil)
+  @objc deinit
+  @objc public func audioPlayerDidFinishPlaying(_ player: AVFAudio.AVAudioPlayer, successfully flag: Swift.Bool)
+  @objc override open func didPassSpokenInstructionPoint(notification: Foundation.NSNotification)
+  @objc override open func speak(_ instruction: OlaMapDirectionFramework.SpokenInstruction)
+  @objc open func speakWithDefaultSpeechSynthesizer(_ instruction: OlaMapDirectionFramework.SpokenInstruction, error: (any Swift.Error)?)
+  @objc open func fetchAndSpeak(instruction: OlaMapDirectionFramework.SpokenInstruction)
+  @objc open func downloadAndCacheSpokenInstruction(instruction: OlaMapDirectionFramework.SpokenInstruction)
+  @objc open func play(_ data: Foundation.Data)
+}
+extension Mapbox.MGLMapView {
+  @_Concurrency.MainActor(unsafe) public var showsTraffic: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var showsIncidents: Swift.Bool {
+    get
+    set
+  }
+}
+public enum ConfigEnvironment {
+  case stage
+  case production
+  public var text: Swift.String {
+    get
+  }
+  public static func == (a: OlaMapNavigation.ConfigEnvironment, b: OlaMapNavigation.ConfigEnvironment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+final public class Configuration {
+  final public var baseURL: Swift.String?
+  final public var tileURL: Swift.String?
+  public init(_ env: OlaMapNavigation.ConfigEnvironment)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBStepsBackgroundView) @_Concurrency.MainActor(unsafe) open class StepsBackgroundView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public protocol StepsViewControllerDelegate {
+  @objc optional func stepsViewController(_ viewController: OlaMapNavigation.StepsViewController, didSelect legIndex: Swift.Int, stepIndex: Swift.Int, cell: OlaMapNavigation.StepTableViewCell)
+  @objc func didDismissStepsViewController(_ viewController: OlaMapNavigation.StepsViewController)
+}
+@_inheritsConvenienceInitializers @objc(MBStepsViewController) @_Concurrency.MainActor(unsafe) public class StepsViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) weak public var delegate: (any OlaMapNavigation.StepsViewControllerDelegate)?
+  @_Concurrency.MainActor(unsafe) convenience public init(routeProgress: OlaMapNavigation.RouteProgress)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) public func dropDownAnimation()
+  @_Concurrency.MainActor(unsafe) public func slideUpAnimation(completion: OlaMapNavigation.CompletionHandler? = nil)
+  @_Concurrency.MainActor(unsafe) public func dismiss(completion: OlaMapNavigation.CompletionHandler? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension OlaMapNavigation.StepsViewController : UIKit.UITableViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+extension OlaMapNavigation.StepsViewController : UIKit.UITableViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, heightForRowAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, willDisplay cell: UIKit.UITableViewCell, forRowAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(MBStepInstructionsView) @_Concurrency.MainActor(unsafe) open class StepInstructionsView : OlaMapNavigation.BaseInstructionsBannerView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(MBStepTableViewCell) @_Concurrency.MainActor(unsafe) open class StepTableViewCell : UIKit.UITableViewCell {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBInstructionLabel) @_Concurrency.MainActor(unsafe) open class InstructionLabel : OlaMapNavigation.StylableLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(MBVisualInstructionDelegate) public protocol VisualInstructionDelegate {
+  @objc(label:willPresentVisualInstruction:asAttributedString:) optional func label(_ label: OlaMapNavigation.InstructionLabel, willPresent instruction: OlaMapDirectionFramework.VisualInstruction, as presented: Foundation.NSAttributedString) -> Foundation.NSAttributedString?
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @IBDesignable @objc(MBBottomBannerView) @_Concurrency.MainActor(unsafe) open class BottomBannerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @objc deinit
+}
+extension OlaMapNavigation.OlaMapService {
+  public func getUserLocation() -> OlaMapNavigation.OlaCoordinate?
+  public func setCurrentLocationMarkerColor(_ color: UIKit.UIColor)
+  public func addCurrentLocationButton(_ view: UIKit.UIView)
+}
+extension OlaMapNavigation.OlaMapService {
+  public func calculateGeoDistance(previous: CoreLocation.CLLocationCoordinate2D, next: CoreLocation.CLLocationCoordinate2D) -> Swift.Double
+  public func calculateBearingValue(previous: CoreLocation.CLLocationCoordinate2D, next: CoreLocation.CLLocationCoordinate2D) -> Swift.Double
+}
+extension OlaMapNavigation.IncidentReportViewController : UIKit.UICollectionViewDataSource, UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc final public func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc final public func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+  @_Concurrency.MainActor(unsafe) @objc final public func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+}
+extension OlaMapNavigation.IncidentReportViewController : UIKit.UICollectionViewDelegateFlowLayout {
+  @_Concurrency.MainActor(unsafe) @objc final public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, sizeForItemAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGSize
+}
+extension Foundation.NSAttributedString {
+  @available(iOS 10.0, *)
+  public func pronounced(_ pronunciation: Swift.String) -> Foundation.NSAttributedString
+}
+@_inheritsConvenienceInitializers @objc(MBRouteVoiceController) open class RouteVoiceController : ObjectiveC.NSObject, AVFAudio.AVSpeechSynthesizerDelegate {
+  @objc public var playRerouteSound: Swift.Bool
+  @objc public var rerouteSoundPlayer: AVFAudio.AVAudioPlayer
+  weak public var voiceControllerDelegate: (any OlaMapNavigation.VoiceControllerDelegate)?
+  @objc override dynamic public init()
+  @objc deinit
+  @objc public func speechSynthesizer(_ synthesizer: AVFAudio.AVSpeechSynthesizer, didFinish utterance: AVFAudio.AVSpeechUtterance)
+  @objc open func didPassSpokenInstructionText(notification: Foundation.NSNotification)
+  @objc open func didPassSpokenInstructionPoint(notification: Foundation.NSNotification)
+  open func speak(_ instruction: OlaMapDirectionFramework.SpokenInstruction)
+}
+@objc(MBVoiceControllerDelegate) public protocol VoiceControllerDelegate {
+  @objc(voiceController:spokenInstrucionsDidFailWithError:) optional func voiceController(_ voiceController: OlaMapNavigation.RouteVoiceController, spokenInstructionsDidFailWith error: any Swift.Error)
+  @objc(voiceController:didInterruptSpokenInstruction:withInstruction:) optional func voiceController(_ voiceController: OlaMapNavigation.RouteVoiceController, didInterrupt interruptedInstruction: OlaMapDirectionFramework.SpokenInstruction, with interruptingInstruction: OlaMapDirectionFramework.SpokenInstruction)
+  @objc(voiceController:willSpeakSpokenInstruction:routeProgress:) optional func voiceController(_ voiceController: OlaMapNavigation.RouteVoiceController, willSpeak instruction: OlaMapDirectionFramework.SpokenInstruction, routeProgress: OlaMapNavigation.RouteProgress) -> OlaMapDirectionFramework.SpokenInstruction?
+}
+public struct MNConfig {
+  public var routeLineColor: UIKit.UIColor
+  public var routeLineAlpha: Swift.Double
+  public var routeLineColorForCApp: UIKit.UIColor
+  public var routeLineCasingColor: UIKit.UIColor
+  public var routeLineCasingColorCApp: UIKit.UIColor
+  public var routeLineCasingAlpha: Swift.Double
+  public var routeLineAlternativeColor: UIKit.UIColor
+  public var routeLineAlternativeColorCApp: UIKit.UIColor
+  public var routeLineAlternativeAlpha: Swift.Double
+  public var routeLineCasingAlternativeColor: UIKit.UIColor
+  public var routeLineCasingAlternativeColorCApp: UIKit.UIColor
+  public var routeLineCasingAlternativeAlpha: Swift.Double
+  public var routeArrowColor: UIKit.UIColor
+  public var routeArrowCasingColor: UIKit.UIColor
+  public init()
+}
+extension OlaMapNavigation.OlaMapService : Mapbox.MGLMapViewDelegate {
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, tapOnCalloutFor annotation: any Mapbox.MGLAnnotation)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, didFailToLocateUserWithError error: any Swift.Error)
+  @objc dynamic public func mapViewWillStartLoadingMap(_ mapView: Mapbox.MGLMapView)
+  @objc dynamic public func mapViewRegionIsChanging(_ mapView: Mapbox.MGLMapView)
+  @objc dynamic public func mapViewDidFailLoadingMap(_ mapView: Mapbox.MGLMapView, withError error: any Swift.Error)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, didAdd annotationViews: [Mapbox.MGLAnnotationView])
+  @objc dynamic public func mapViewDidBecomeIdle(_ mapView: Mapbox.MGLMapView)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, regionDidChangeWith reason: Mapbox.MGLCameraChangeReason, animated: Swift.Bool)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, didChangeLocationManagerAuthorization manager: any Mapbox.MGLLocationManager)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, regionDidChangeAnimated animated: Swift.Bool)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, didChange mode: Mapbox.MGLUserTrackingMode, animated: Swift.Bool)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, didFailToLoadImage imageName: Swift.String) -> UIKit.UIImage?
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, didFinishLoading style: Mapbox.MGLStyle)
+  @objc dynamic public func mapViewDidFinishLoadingMap(_ mapView: Mapbox.MGLMapView)
+  @objc dynamic public func mapViewDidFinishRenderingMap(_ mapView: Mapbox.MGLMapView, fullyRendered: Swift.Bool)
+  @objc dynamic public func mapViewDidFinishRenderingFrame(_ mapView: Mapbox.MGLMapView, fullyRendered: Swift.Bool)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, viewFor annotation: any Mapbox.MGLAnnotation) -> Mapbox.MGLAnnotationView?
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, annotationCanShowCallout annotation: any Mapbox.MGLAnnotation) -> Swift.Bool
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, strokeColorForShapeAnnotation annotation: Mapbox.MGLShape) -> UIKit.UIColor
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, lineWidthForPolylineAnnotation annotation: Mapbox.MGLPolyline) -> CoreFoundation.CGFloat
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, alphaForShapeAnnotation annotation: Mapbox.MGLShape) -> CoreFoundation.CGFloat
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, fillColorForPolygonAnnotation annotation: Mapbox.MGLPolygon) -> UIKit.UIColor
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, didSelect annotation: any Mapbox.MGLAnnotation)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, didSelect annotationView: Mapbox.MGLAnnotationView)
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, shouldChangeFrom oldCamera: Mapbox.MGLMapCamera, to newCamera: Mapbox.MGLMapCamera) -> Swift.Bool
+  @objc dynamic public func mapView(_ mapView: Mapbox.MGLMapView, regionIsChangingWith reason: Mapbox.MGLCameraChangeReason)
+}
+public let MBRouteLineWidthByZoomLevel: [Swift.Int : Foundation.NSExpression]
+public let MBGradientRouteLineByZoomLevel: [Swift.Int : Foundation.NSExpression]
+public var NavigationMapViewMinimumDistanceForOverheadZooming: Swift.Double
+public let MBCurrentLegAttribute: Swift.String
+public let MBCongestionAttribute: Swift.String
+public let NavigationViewMinimumVolumeForWarning: Swift.Float
+@_inheritsConvenienceInitializers @objc(MBStyle) open class Style : ObjectiveC.NSObject {
+  @objc public var tintColor: UIKit.UIColor?
+  public var statusBarStyle: UIKit.UIStatusBarStyle?
+  @objc public var fontFamily: Swift.String?
+  @objc public var styleType: OlaMapNavigation.StyleType
+  @objc open var mapStyleURL: Foundation.URL
+  @objc open var previewMapStyleURL: Foundation.URL
+  @objc open func apply()
+  @objc required override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBButton) @_Concurrency.MainActor(unsafe) open class Button : OlaMapNavigation.StylableButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBCancelButton) @_Concurrency.MainActor(unsafe) open class CancelButton : OlaMapNavigation.Button {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBDismissButton) @_Concurrency.MainActor(unsafe) open class DismissButton : OlaMapNavigation.Button {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBFloatingButton) @_Concurrency.MainActor(unsafe) open class FloatingButton : OlaMapNavigation.Button {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBReportButton) @_Concurrency.MainActor(unsafe) public class ReportButton : OlaMapNavigation.Button {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBHighlightedButton) @_Concurrency.MainActor(unsafe) public class HighlightedButton : OlaMapNavigation.Button {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @IBDesignable @objc(MBResumeButton) @_Concurrency.MainActor(unsafe) public class ResumeButton : UIKit.UIControl {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForInterfaceBuilder()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBDraggableView) @_Concurrency.MainActor(unsafe) open class StepListIndicatorView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var gradientColors: [UIKit.UIColor] {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBStylableLabel) @_Concurrency.MainActor(unsafe) open class StylableLabel : UIKit.UILabel {
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var normalTextColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var normalFont: UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBStylableView) @_Concurrency.MainActor(unsafe) open class StylableView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBStylableTextView) @_Concurrency.MainActor(unsafe) open class StylableTextView : UIKit.UITextView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var normalTextColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @available(iOS 7.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect, textContainer: UIKit.NSTextContainer?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBDistanceLabel) @_Concurrency.MainActor(unsafe) open class DistanceLabel : OlaMapNavigation.StylableLabel {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var valueTextColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var unitTextColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var valueFont: UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var unitFont: UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBPrimaryLabel) @_Concurrency.MainActor(unsafe) open class PrimaryLabel : OlaMapNavigation.InstructionLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBSecondaryLabel) @_Concurrency.MainActor(unsafe) open class SecondaryLabel : OlaMapNavigation.InstructionLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBTimeRemainingLabel) @_Concurrency.MainActor(unsafe) open class TimeRemainingLabel : OlaMapNavigation.StylableLabel {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficUnknownColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficLowColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficModerateColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficHeavyColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var trafficSevereColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBDistanceRemainingLabel) @_Concurrency.MainActor(unsafe) open class DistanceRemainingLabel : OlaMapNavigation.StylableLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBArrivalTimeLabel) @_Concurrency.MainActor(unsafe) open class ArrivalTimeLabel : OlaMapNavigation.StylableLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBTitleLabel) @_Concurrency.MainActor(unsafe) open class TitleLabel : OlaMapNavigation.StylableLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBSubtitleLabel) @_Concurrency.MainActor(unsafe) open class SubtitleLabel : OlaMapNavigation.StylableLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBWayNameView) @_Concurrency.MainActor(unsafe) open class WayNameView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var borderColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBWayNameLabel) @_Concurrency.MainActor(unsafe) open class WayNameLabel : OlaMapNavigation.StylableLabel {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBProgressBar) @_Concurrency.MainActor(unsafe) public class ProgressBar : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var barColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var description: Swift.String {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBLineView) @_Concurrency.MainActor(unsafe) public class LineView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var lineColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBSeparatorView) @_Concurrency.MainActor(unsafe) public class SeparatorView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBStylableButton) @_Concurrency.MainActor(unsafe) open class StylableButton : UIKit.UIButton {
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var textFont: UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var textColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var borderColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var borderWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var cornerRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBManeuverContainerView) @_Concurrency.MainActor(unsafe) open class ManeuverContainerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBInstructionsBannerContentView) @_Concurrency.MainActor(unsafe) open class InstructionsBannerContentView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBBottomBannerContentView) @_Concurrency.MainActor(unsafe) open class BottomBannerContentView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(MBMarkerView) @_Concurrency.MainActor(unsafe) public class MarkerView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var innerColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var shadowColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var pinColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var strokeColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func draw(_ rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public enum AuthType {
+  case apiKey(key: Swift.String)
+  case mapToken(token: Swift.String)
+}
+@objc public class OlaMapService : ObjectiveC.NSObject, OlaMapNavigation.MapServiceProtocol {
+  public var mglMapView: Mapbox.MGLMapView? {
+    get
+    set
+  }
+  weak public var delegate: (any OlaMapNavigation.OlaMapServiceDelegate)?
+  public var subviewsManager: any OlaMapNavigation.OLAMapSubviewsProtocol
+  public var showCompassVisibility: Swift.Bool {
+    get
+    set
+  }
+  public var compassViewPosition: Mapbox.MGLOrnamentPosition {
+    get
+    set
+  }
+  public var compassViewMargin: CoreFoundation.CGPoint {
+    get
+    set
+  }
+  public var allowMapTilting: Swift.Bool {
+    get
+    set
+  }
+  public init(auth: OlaMapNavigation.AuthType, tileURL: Foundation.URL, env: OlaMapNavigation.ConfigEnvironment = .production, projectId: Swift.String, userId: Swift.String? = "NA")
+  public init(auth: OlaMapNavigation.AuthType, tileURL: Foundation.URL, env: OlaMapNavigation.ConfigEnvironment = .production, projectId: Swift.String = "NA")
+  public init(auth: OlaMapNavigation.AuthType, config: OlaMapNavigation.Configuration, tileURL: Foundation.URL, projectId: Swift.String, userId: Swift.String? = "NA")
+  public func loadMap(onView: UIKit.UIView, coordinate: OlaMapNavigation.OlaCoordinate? = nil, showWaterMark: Swift.Bool = true, showCurrentLocationIcon: Swift.Bool = true, loadStyleFromLocale: Swift.Bool = false)
+  public func refreshMap()
+  public func setDebugLogs(_ isEnabled: Swift.Bool)
+  public var compassView: UIKit.UIView? {
+    get
+  }
+  public func clearPOIs()
+  public func disablePOIs()
+  public func enablePOIs()
+  public func setBaseURL(_ url: Swift.String)
+  @objc deinit
+}
+extension OlaMapNavigation.OlaMapService {
+  public var padding: UIKit.UIEdgeInsets? {
+    get
+    set
+  }
+  public var frame: CoreFoundation.CGRect? {
+    get
+    set
+  }
+  public var cameraZoom: Swift.Double? {
+    get
+  }
+  public var centerCoordinateOfMap: CoreLocation.CLLocationCoordinate2D? {
+    get
+  }
+  public var userLocation: CoreLocation.CLLocation? {
+    get
+  }
+  public var getCurrentLocationCoordinate: CoreLocation.CLLocationCoordinate2D? {
+    get
+  }
+  public func toPoint(_ coordinate: CoreLocation.CLLocationCoordinate2D) -> CoreFoundation.CGPoint?
+  public func toCoordinate(_ points: CoreFoundation.CGPoint) -> CoreLocation.CLLocationCoordinate2D?
+  public func getCurrentLocation(onCompletion: @escaping (_ coordinate: OlaMapNavigation.OlaCoordinate?) -> Swift.Void)
+  public func getCurrentZoomLevel() -> Swift.Double
+  public func setCustomCompassImage(_ image: UIKit.UIImage)
+}
+extension OlaMapNavigation.OlaMapService {
+  public func setEnableTraffic(_ showTraffic: Swift.Bool)
+  public func setEnableLocation(_ state: Swift.Bool)
+  public func setZoomLevel(_ zoomLevel: Swift.Double)
+  public func setMinimumZoomLevel(_ zoomLevel: Swift.Double)
+  public func setMaxZoomLevel(_ zoom: Swift.Double)
+  public func setAnnotationCalloutEnable(_ state: Swift.Bool)
+  public func setMarkerColor(_ color: UIKit.UIColor)
+  public func setInstrumentation(_ client: any OlaMapNavigation.OlaMapInstrumentationDelegate)
+  public func setRotatingGesture(_ state: Swift.Bool)
+  public func setAuth(_ auth: OlaMapNavigation.AuthType)
+}
+extension OlaMapNavigation.OlaMapService {
+  @available(iOS 13, *)
+  public func olaMapBrand() -> UIKit.UIImage?
+  public func addWaterMark(_ view: UIKit.UIView)
+}
+extension OlaMapNavigation.OlaMapService {
+  public func deleteRoutePreview()
+  public func showRoutePreview(jsonData: Foundation.Data, popupDecorator: OlaMapNavigation.PopupDecoratedModel = PopupDecoratedModel(), polylineDecorator: OlaMapNavigation.PolylineDecorator? = nil, isTrafficSupported: Swift.Bool = false, isEtaBadge: Swift.Bool = false, edgePadding: UIKit.UIEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30), stops: [OlaMapNavigation.OlaStop]?, shouldSnapStopCoordinateOnRoute: Swift.Bool = false)
+}
+extension OlaMapNavigation.OlaMapService {
+  public func showRoutePreviewForWalking(jsonData: Foundation.Data, popupDecorator: OlaMapNavigation.PopupDecoratedModel = PopupDecoratedModel(), polylineIconType: OlaMapNavigation.WalkingPolylineIconType = .defaultType, isEtaBadge: Swift.Bool = false, edgePadding: UIKit.UIEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30))
+}
+public class OlaMapMarker {
+  public var imageName: Swift.String?
+  public var identifier: Swift.String
+  public var title: Swift.String?
+  public var image: UIKit.UIImage?
+  public init(identifier: Swift.String?, title: Swift.String?, image: UIKit.UIImage?, imageName: Swift.String?)
+  public func removeMarker()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class BikeAnnotationView : OlaMapNavigation.OlaAnnotationView {
+  @_Concurrency.MainActor(unsafe) convenience public init(identifier: Swift.String, bikeImage: UIKit.UIImage?, color: UIKit.UIColor? = nil, opacity: CoreFoundation.CGFloat? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func setSelected(_ selected: Swift.Bool, animated: Swift.Bool)
+  @objc deinit
+}
+extension Foundation.Locale {
+  public static var preferredLocalLanguageCountryCode: Swift.String {
+    get
+  }
+  public static var nationalizedCurrent: Foundation.Locale
+  public static var usesMetric: Swift.Bool {
+    get
+  }
+  public var usesMetric: Swift.Bool {
+    get
+  }
+}
+public struct Solar {
+  public let coordinate: CoreLocation.CLLocationCoordinate2D
+  public var date: Foundation.Date {
+    get
+  }
+  public var sunrise: Foundation.Date? {
+    get
+  }
+  public var sunset: Foundation.Date? {
+    get
+  }
+  public var civilSunrise: Foundation.Date? {
+    get
+  }
+  public var civilSunset: Foundation.Date? {
+    get
+  }
+  public var nauticalSunrise: Foundation.Date? {
+    get
+  }
+  public var nauticalSunset: Foundation.Date? {
+    get
+  }
+  public var astronomicalSunrise: Foundation.Date? {
+    get
+  }
+  public var astronomicalSunset: Foundation.Date? {
+    get
+  }
+  public init?(for date: Foundation.Date = Date(), coordinate: CoreLocation.CLLocationCoordinate2D)
+  public mutating func calculate()
+}
+extension OlaMapNavigation.Solar {
+  public var isDaytime: Swift.Bool {
+    get
+  }
+  public var isNighttime: Swift.Bool {
+    get
+  }
+}
+extension OlaMapNavigation.RouteController.RerouteReason : Swift.Equatable {}
+extension OlaMapNavigation.RouteController.RerouteReason : Swift.Hashable {}
+extension OlaMapNavigation.RouteController.RerouteReason : Swift.RawRepresentable {}
+extension OlaMapNavigation.NavigationViewController : OlaMapNavigation.VisualInstructionDelegate {}
+extension OlaMapNavigation.NavigationViewController : Mapbox.MGLMapViewDelegate {}
+extension OlaMapNavigation.OlaManeuverType : Swift.Equatable {}
+extension OlaMapNavigation.OlaManeuverType : Swift.Hashable {}
+extension OlaMapNavigation.OlaManeuverType : Swift.RawRepresentable {}
+extension OlaMapNavigation.SpokenInstructionErrorCode : Swift.Equatable {}
+extension OlaMapNavigation.SpokenInstructionErrorCode : Swift.Hashable {}
+extension OlaMapNavigation.SpokenInstructionErrorCode : Swift.RawRepresentable {}
+extension OlaMapNavigation.MBErrorCode : Swift.Equatable {}
+extension OlaMapNavigation.MBErrorCode : Swift.Hashable {}
+extension OlaMapNavigation.MBErrorCode : Swift.RawRepresentable {}
+extension OlaMapNavigation.TextType : Swift.Equatable {}
+extension OlaMapNavigation.TextType : Swift.Hashable {}
+extension OlaMapNavigation.TextType : Swift.RawRepresentable {}
+extension OlaMapNavigation.AudioFormat : Swift.Equatable {}
+extension OlaMapNavigation.AudioFormat : Swift.Hashable {}
+extension OlaMapNavigation.AudioFormat : Swift.RawRepresentable {}
+extension OlaMapNavigation.SpeechGender : Swift.Equatable {}
+extension OlaMapNavigation.SpeechGender : Swift.Hashable {}
+extension OlaMapNavigation.SpeechGender : Swift.RawRepresentable {}
+extension OlaMapNavigation.NavigationTrackingMode : Swift.Equatable {}
+extension OlaMapNavigation.NavigationTrackingMode : Swift.Hashable {}
+extension OlaMapNavigation.CommuteMode : Swift.Equatable {}
+extension OlaMapNavigation.CommuteMode : Swift.Hashable {}
+extension OlaMapNavigation.OlaMapNavigationService : OlaMapNavigation.VisualInstructionDelegate {}
+extension OlaMapNavigation.PolylineType : Swift.Equatable {}
+extension OlaMapNavigation.PolylineType : Swift.Hashable {}
+extension OlaMapNavigation.PolylineType : Swift.RawRepresentable {}
+extension OlaMapNavigation.Maneuver : Swift.Equatable {}
+extension OlaMapNavigation.Maneuver : Swift.Hashable {}
+extension OlaMapNavigation.Maneuver : Swift.RawRepresentable {}
+extension OlaMapNavigation.OLAMapButton : Swift.Equatable {}
+extension OlaMapNavigation.OLAMapButton : Swift.Hashable {}
+extension OlaMapNavigation.OlaMapStyle : Swift.Equatable {}
+extension OlaMapNavigation.OlaMapStyle : Swift.Hashable {}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayActivity : Swift.Equatable {}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayActivity : Swift.Hashable {}
+@available(iOS 12.0, *)
+extension OlaMapNavigation.CarPlayActivity : Swift.RawRepresentable {}
+extension OlaMapNavigation.ManeuversStyleKit.ResizingBehavior : Swift.Equatable {}
+extension OlaMapNavigation.ManeuversStyleKit.ResizingBehavior : Swift.Hashable {}
+extension OlaMapNavigation.ManeuversStyleKit.ResizingBehavior : Swift.RawRepresentable {}
+extension OlaMapNavigation.StyleType : Swift.Equatable {}
+extension OlaMapNavigation.StyleType : Swift.Hashable {}
+extension OlaMapNavigation.StyleType : Swift.RawRepresentable {}
+extension OlaMapNavigation.OlaTrafficType : Swift.Equatable {}
+extension OlaMapNavigation.OlaTrafficType : Swift.Hashable {}
+extension OlaMapNavigation.OlaMapGesture : Swift.Equatable {}
+extension OlaMapNavigation.OlaMapGesture : Swift.Hashable {}
+extension OlaMapNavigation.FeedbackType : Swift.Equatable {}
+extension OlaMapNavigation.FeedbackType : Swift.Hashable {}
+extension OlaMapNavigation.FeedbackType : Swift.RawRepresentable {}
+extension OlaMapNavigation.FeedbackSource : Swift.Equatable {}
+extension OlaMapNavigation.FeedbackSource : Swift.Hashable {}
+extension OlaMapNavigation.FeedbackSource : Swift.RawRepresentable {}
+extension OlaMapNavigation.RouteInValidType : Swift.Equatable {}
+extension OlaMapNavigation.RouteInValidType : Swift.Hashable {}
+extension OlaMapNavigation.RouteInValidType : Swift.RawRepresentable {}
+extension OlaMapNavigation.ToastPosition : Swift.Equatable {}
+extension OlaMapNavigation.ToastPosition : Swift.Hashable {}
+extension OlaMapNavigation.ConfigEnvironment : Swift.Equatable {}
+extension OlaMapNavigation.ConfigEnvironment : Swift.Hashable {}

@@ -8,5 +8,5 @@ Before proceeding, ensure that you meet the following prerequisites:
 
 ### Installation
 ```
-pod 'OlaMapsPlatformSDK-iOS'
+pod 'OlaMapNavigation', :git => 'https://github.com/ola-maps/ios-navigation-sdk.git'
 ```
