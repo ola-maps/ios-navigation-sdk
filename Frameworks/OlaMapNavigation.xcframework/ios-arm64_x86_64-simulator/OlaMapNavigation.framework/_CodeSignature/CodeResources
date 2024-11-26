@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		ES0j1ofcOgGtq5VzHgKh1YvfaVk=
+		BoCxlyMA9LxLH4s4Hqb004MhILE=
 		</data>
 		<key>Base.lproj/Localizable.strings</key>
 		<data>
@@ -64,9 +64,9 @@
 		<data>
 		5Z0AFFkCE/is0qLiMNw99OdMpyc=
 		</data>
-		<key>LICENSE.txt</key>
+		<key>LICENSE.docx</key>
 		<data>
-		75TqchaTf7JauDHuBZq10HcRXwk=
+		P8a+9oK8zCq7pbe7cUn53IqLwIE=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -779,7 +779,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			R3azTQNguR5t1XB5H0VhVjChOxn/29CIn8VMyr4eia4=
+			kMDRMMsYjcCH9A6SKSbeeBLVor60Eo9ErzeQvnGPFxs=
 			</data>
 		</dict>
 		<key>Base.lproj/Localizable.strings</key>
@@ -873,11 +873,11 @@
 			m/Ym6RTGzbIfyc9louGKJdSgJWlL5b0Z6MFf7itgMVY=
 			</data>
 		</dict>
-		<key>LICENSE.txt</key>
+		<key>LICENSE.docx</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			csoFISwk7chxsYQmD4mTVWNgt+QZc0/Dcs66ms1tZxc=
+			9WXw/HTApBl9hxOBiK85MDW5tZvy2pkPuexTpAcGfA0=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
