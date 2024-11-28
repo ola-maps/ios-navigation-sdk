@@ -1,0 +1,6 @@
+framework module OlaMapNavigation {
+  umbrella header "OlaMapNavigation.h"
+  export *
+
+  module * { export * }
+}

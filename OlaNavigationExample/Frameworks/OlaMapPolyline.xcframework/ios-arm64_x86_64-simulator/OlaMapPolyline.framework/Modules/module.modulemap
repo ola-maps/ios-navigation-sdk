@@ -1,0 +1,11 @@
+framework module OlaMapPolyline {
+  umbrella header "OlaMapPolyline.h"
+  export *
+
+  module * { export * }
+}
+
+module OlaMapPolyline.Swift {
+  header "OlaMapPolyline-Swift.h"
+  requires objc
+}

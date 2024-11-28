@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name          = 'OlaMapNavigation'
-  spec.version       = '1.6.85.1'
+  spec.version       = '1.6.86'
   spec.summary       = 'OlaMaps PlatformSDK for Navigation and Maps'
   spec.description   = 'Navigation SDK provides a comprehensive toolkit for integrating basic & advanced navigation capabilities into your iOS applications.'
   spec.homepage      = 'https://maps.olakrutrim.com/'
@@ -14,12 +14,13 @@ Pod::Spec.new do |spec|
     "Frameworks/Mapbox.xcframework",
     "Frameworks/OlaMapNavigation.xcframework",
     "Frameworks/OlaTurf.xcframework",
+    "Frameworks/OlaMapPolyline.xcframework",
     "Frameworks/OlaMapDirection.xcframework",
-    "Frameworks/MoEngageAnalytics.xcframework",
-    "Frameworks/MoEngageCore.xcframework",
-    "Frameworks/MoEngageMessaging.xcframework",
-    "Frameworks/MoEngageObjCUtils.xcframework",
-    "Frameworks/MoEngageSDK.xcframework",
-    "Frameworks/MoEngageSecurity.xcframework"
+    "Frameworks/Moengage-9.16.2/MoEngageAnalytics.xcframework",
+    "Frameworks/Moengage-9.16.2/MoEngageCore.xcframework",
+    "Frameworks/Moengage-9.16.2/MoEngageMessaging.xcframework",
+    "Frameworks/Moengage-9.16.2/MoEngageObjCUtils.xcframework",
+    "Frameworks/Moengage-9.16.2/MoEngageSDK.xcframework",
+    "Frameworks/Moengage-9.16.2/MoEngageSecurity.xcframework"
 
 end

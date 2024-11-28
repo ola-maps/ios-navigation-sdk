@@ -1,0 +1,350 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OlaTurf
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import CoreLocation
+import Foundation
+@_exported import OlaTurf
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public typealias LocationRadians = Swift.Double
+public typealias RadianDistance = Swift.Double
+public typealias RadianDirection = Swift.Double
+public struct RadianCoordinate2D {
+  public init(latitude: OlaTurf.LocationRadians, longitude: OlaTurf.LocationRadians)
+  public init(_ degreeCoordinate: CoreLocation.CLLocationCoordinate2D)
+  public func direction(to coordinate: OlaTurf.RadianCoordinate2D) -> OlaTurf.RadianDirection
+  public func coordinate(at distance: OlaTurf.RadianDistance, facing direction: OlaTurf.RadianDirection) -> OlaTurf.RadianCoordinate2D
+  public func distance(to coordinate: OlaTurf.RadianCoordinate2D) -> OlaTurf.RadianDistance
+}
+public enum GeometryType : Swift.String {
+  case Point
+  case LineString
+  case Polygon
+  case MultiPoint
+  case MultiLineString
+  case MultiPolygon
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct Geometry : Swift.Codable {
+  public var type: Swift.String
+  public var geometryType: OlaTurf.GeometryType? {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Point : Swift.Codable, Swift.Equatable {
+  public var coordinates: CoreLocation.CLLocationCoordinate2D
+  public init(_ coordinates: CoreLocation.CLLocationCoordinate2D)
+  public static func == (a: OlaTurf.Point, b: OlaTurf.Point) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PointFeature : OlaTurf.GeoJSONObject {
+  public var type: OlaTurf.FeatureType
+  public var identifier: OlaTurf.FeatureIdentifier?
+  public var geometry: OlaTurf.Point
+  public var properties: [Swift.String : OlaTurf.AnyJSONType]?
+  public init(_ geometry: OlaTurf.Point)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct MultiPoint : Swift.Codable, Swift.Equatable {
+  public var coordinates: [CoreLocation.CLLocationCoordinate2D]
+  public init(_ coordinates: [CoreLocation.CLLocationCoordinate2D])
+  public static func == (a: OlaTurf.MultiPoint, b: OlaTurf.MultiPoint) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MultiPointFeature : OlaTurf.GeoJSONObject {
+  public var type: OlaTurf.FeatureType
+  public var identifier: OlaTurf.FeatureIdentifier?
+  public var geometry: OlaTurf.MultiPoint
+  public var properties: [Swift.String : OlaTurf.AnyJSONType]?
+  public init(_ geometry: OlaTurf.MultiPoint)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct Polygon : Swift.Codable, Swift.Equatable {
+  public var coordinates: [[CoreLocation.CLLocationCoordinate2D]]
+  public init(_ coordinates: [[CoreLocation.CLLocationCoordinate2D]])
+  public var innerRings: [OlaTurf.Ring]? {
+    get
+  }
+  public var outerRing: OlaTurf.Ring {
+    get
+  }
+  public static func == (a: OlaTurf.Polygon, b: OlaTurf.Polygon) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PolygonFeature : OlaTurf.GeoJSONObject {
+  public var type: OlaTurf.FeatureType
+  public var identifier: OlaTurf.FeatureIdentifier?
+  public var geometry: OlaTurf.Polygon
+  public var properties: [Swift.String : OlaTurf.AnyJSONType]?
+  public init(_ geometry: OlaTurf.Polygon)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension OlaTurf.Polygon {
+  public var area: Swift.Double {
+    get
+  }
+}
+extension OlaTurf.Polygon {
+  public func contains(_ coordinate: CoreLocation.CLLocationCoordinate2D, ignoreBoundary: Swift.Bool = false) -> Swift.Bool
+}
+public struct Ring {
+  public var coordinates: [CoreLocation.CLLocationCoordinate2D]
+  public init(coordinates: [CoreLocation.CLLocationCoordinate2D])
+  public var area: Swift.Double {
+    get
+  }
+}
+extension OlaTurf.Ring {
+  public func contains(_ coordinate: CoreLocation.CLLocationCoordinate2D, ignoreBoundary: Swift.Bool = false) -> Swift.Bool
+}
+public protocol JSONType : Swift.Decodable, Swift.Encodable {
+  var jsonValue: Any { get }
+}
+extension Swift.Int : OlaTurf.JSONType {
+  public var jsonValue: Any {
+    get
+  }
+}
+extension Swift.String : OlaTurf.JSONType {
+  public var jsonValue: Any {
+    get
+  }
+}
+extension Swift.Double : OlaTurf.JSONType {
+  public var jsonValue: Any {
+    get
+  }
+}
+extension Swift.Bool : OlaTurf.JSONType {
+  public var jsonValue: Any {
+    get
+  }
+}
+public struct AnyJSONType : OlaTurf.JSONType {
+  public let jsonValue: Any
+  public init(_ value: Any)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension OlaTurf.Ring : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct MultiLineString : Swift.Codable, Swift.Equatable {
+  public var coordinates: [[CoreLocation.CLLocationCoordinate2D]]
+  public init(_ coordinates: [[CoreLocation.CLLocationCoordinate2D]])
+  public static func == (a: OlaTurf.MultiLineString, b: OlaTurf.MultiLineString) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MultiLineStringFeature : OlaTurf.GeoJSONObject {
+  public var type: OlaTurf.FeatureType
+  public var identifier: OlaTurf.FeatureIdentifier?
+  public var geometry: OlaTurf.MultiLineString!
+  public var properties: [Swift.String : OlaTurf.AnyJSONType]?
+  public init(_ geometry: OlaTurf.MultiLineString)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum Number : Swift.Equatable {
+  case int(Swift.Int)
+  case double(Swift.Double)
+  public var value: Any? {
+    get
+  }
+  public static func == (a: OlaTurf.Number, b: OlaTurf.Number) -> Swift.Bool
+}
+extension OlaTurf.Number : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum FeatureIdentifier {
+  case string(Swift.String)
+  case number(OlaTurf.Number)
+  public var value: Any? {
+    get
+  }
+}
+extension OlaTurf.FeatureIdentifier : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public typealias Polyline = OlaTurf.LineString
+public struct LineString : Swift.Codable, Swift.Equatable {
+  public var coordinates: [CoreLocation.CLLocationCoordinate2D]
+  public static func == (a: OlaTurf.LineString, b: OlaTurf.LineString) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LineStringFeature : OlaTurf.GeoJSONObject {
+  public var type: OlaTurf.FeatureType
+  public var identifier: OlaTurf.FeatureIdentifier?
+  public var geometry: OlaTurf.LineString!
+  public var properties: [Swift.String : OlaTurf.AnyJSONType]?
+  public init(_ geometry: OlaTurf.LineString)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension OlaTurf.LineString {
+  public func trimmed(from coordinate: CoreLocation.CLLocationCoordinate2D, distance: CoreLocation.CLLocationDistance) -> OlaTurf.LineString
+  public struct IndexedCoordinate {
+    public let coordinate: Swift.Array<CoreLocation.CLLocationCoordinate2D>.Element
+    public let index: Swift.Array<CoreLocation.CLLocationCoordinate2D>.Index
+    public let distance: CoreLocation.CLLocationDistance
+  }
+  public init(_ coordinates: [CoreLocation.CLLocationCoordinate2D])
+  public func coordinateFromStart(distance: CoreLocation.CLLocationDistance) -> CoreLocation.CLLocationCoordinate2D?
+  public func indexedCoordinateFromStart(distance: CoreLocation.CLLocationDistance) -> OlaTurf.LineString.IndexedCoordinate?
+  public func distance(from start: CoreLocation.CLLocationCoordinate2D? = nil, to end: CoreLocation.CLLocationCoordinate2D? = nil) -> CoreLocation.CLLocationDistance
+  public func sliced(from start: CoreLocation.CLLocationCoordinate2D? = nil, to end: CoreLocation.CLLocationCoordinate2D? = nil) -> OlaTurf.LineString
+  public func closestCoordinate(to coordinate: CoreLocation.CLLocationCoordinate2D) -> OlaTurf.LineString.IndexedCoordinate?
+}
+public enum FeatureType : Swift.String {
+  case feature
+  case featureCollection
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension OlaTurf.FeatureType : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol GeoJSONObject : Swift.Decodable, Swift.Encodable {
+  var type: OlaTurf.FeatureType { get }
+  var identifier: OlaTurf.FeatureIdentifier? { get set }
+  var properties: [Swift.String : OlaTurf.AnyJSONType]? { get set }
+}
+public enum FeatureVariant {
+  case pointFeature(OlaTurf.PointFeature)
+  case lineStringFeature(OlaTurf.LineStringFeature)
+  case polygonFeature(OlaTurf.PolygonFeature)
+  case multiPointFeature(OlaTurf.MultiPointFeature)
+  case multiLineStringFeature(OlaTurf.MultiLineStringFeature)
+  case multiPolygonFeature(OlaTurf.MultiPolygonFeature)
+  public var value: Any? {
+    get
+  }
+}
+extension OlaTurf.FeatureVariant : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Feature : Swift.Codable {
+  public var type: OlaTurf.GeoJSONType
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum GeoJSONType : Swift.String {
+  case Feature
+  case FeatureCollection
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum GeoJSONError : Swift.Error {
+  case unknownType
+  case noTypeFound
+  public static func == (a: OlaTurf.GeoJSONError, b: OlaTurf.GeoJSONError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class GeoJSON : Swift.Codable {
+  public var decoded: (any Swift.Decodable & Swift.Encodable)?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func parse(_ data: Foundation.Data) throws -> OlaTurf.GeoJSON
+  public static func parse<T>(_ type: T.Type, from data: Foundation.Data) throws -> T where T : OlaTurf.GeoJSONObject
+  @objc deinit
+}
+public struct FeatureCollection : OlaTurf.GeoJSONObject {
+  public var type: OlaTurf.FeatureType
+  public var identifier: OlaTurf.FeatureIdentifier?
+  public var features: [OlaTurf.FeatureVariant]
+  public var properties: [Swift.String : OlaTurf.AnyJSONType]?
+  public init(_ features: [OlaTurf.FeatureVariant])
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct MultiPolygon : Swift.Codable, Swift.Equatable {
+  public var coordinates: [[[CoreLocation.CLLocationCoordinate2D]]]
+  public init(_ coordinates: [[[CoreLocation.CLLocationCoordinate2D]]])
+  public static func == (a: OlaTurf.MultiPolygon, b: OlaTurf.MultiPolygon) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MultiPolygonFeature : OlaTurf.GeoJSONObject {
+  public var type: OlaTurf.FeatureType
+  public var identifier: OlaTurf.FeatureIdentifier?
+  public var geometry: OlaTurf.MultiPolygon
+  public var properties: [Swift.String : OlaTurf.AnyJSONType]?
+  public init(_ geometry: OlaTurf.MultiPolygon)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct BoundingBox : Swift.Codable {
+  public init?(from coordinates: [CoreLocation.CLLocationCoordinate2D]?)
+  public init(_ northWest: CoreLocation.CLLocationCoordinate2D, _ southEast: CoreLocation.CLLocationCoordinate2D)
+  public func contains(_ coordinate: CoreLocation.CLLocationCoordinate2D) -> Swift.Bool
+  public var northWest: CoreLocation.CLLocationCoordinate2D
+  public var southEast: CoreLocation.CLLocationCoordinate2D
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias LineSegment = (CoreLocation.CLLocationCoordinate2D, CoreLocation.CLLocationCoordinate2D)
+public struct Turf {
+  public static func intersection(_ line1: OlaTurf.LineSegment, _ line2: OlaTurf.LineSegment) -> CoreLocation.CLLocationCoordinate2D?
+}
+extension Swift.Double {
+  public func wrap(min minimumValue: CoreLocation.CLLocationDirection, max maximumValue: CoreLocation.CLLocationDirection) -> CoreLocation.CLLocationDirection
+}
+extension Swift.Double {
+  public func toRadians() -> OlaTurf.LocationRadians
+  public func toDegrees() -> CoreLocation.CLLocationDirection
+}
+extension Swift.Double {
+  public func difference(from beta: CoreLocation.CLLocationDirection) -> CoreLocation.CLLocationDirection
+}
+extension CoreLocation.CLLocationCoordinate2D : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension CoreLocation.CLLocationCoordinate2D : Swift.Equatable {
+  public init(_ radianCoordinate: OlaTurf.RadianCoordinate2D)
+  public static func == (lhs: CoreLocation.CLLocationCoordinate2D, rhs: CoreLocation.CLLocationCoordinate2D) -> Swift.Bool
+  public func direction(to coordinate: CoreLocation.CLLocationCoordinate2D) -> CoreLocation.CLLocationDirection
+  public func coordinate(at distance: CoreLocation.CLLocationDistance, facing direction: CoreLocation.CLLocationDirection) -> CoreLocation.CLLocationCoordinate2D
+  public func distance(to coordinate: CoreLocation.CLLocationCoordinate2D) -> CoreLocation.CLLocationDistance
+}
+extension OlaTurf.GeometryType : Swift.Equatable {}
+extension OlaTurf.GeometryType : Swift.Hashable {}
+extension OlaTurf.GeometryType : Swift.RawRepresentable {}
+extension OlaTurf.FeatureType : Swift.Equatable {}
+extension OlaTurf.FeatureType : Swift.Hashable {}
+extension OlaTurf.FeatureType : Swift.RawRepresentable {}
+extension OlaTurf.GeoJSONType : Swift.Equatable {}
+extension OlaTurf.GeoJSONType : Swift.Hashable {}
+extension OlaTurf.GeoJSONType : Swift.RawRepresentable {}
+extension OlaTurf.GeoJSONError : Swift.Equatable {}
+extension OlaTurf.GeoJSONError : Swift.Hashable {}
