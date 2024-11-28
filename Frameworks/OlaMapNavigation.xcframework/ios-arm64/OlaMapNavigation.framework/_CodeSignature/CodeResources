@@ -4,9 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.gitkeep</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
 		<key>Assets.car</key>
 		<data>
-		BoCxlyMA9LxLH4s4Hqb004MhILE=
+		rpzYy4Ed5y4151on6QNUkWrI13I=
 		</data>
 		<key>Base.lproj/Localizable.strings</key>
 		<data>
@@ -50,7 +54,7 @@
 		</data>
 		<key>Headers/MapboxCoreNavigation.h</key>
 		<data>
-		2HCYWG2zP+YKGIMy3dnArqx7sMk=
+		t26B1p8/MTVJZK7LQeHcfu4NgrI=
 		</data>
 		<key>Headers/MapboxNavigation.h</key>
 		<data>
@@ -62,7 +66,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		efU9wF9/DiZZNr5cWl8entBs6wc=
+		y4FkKuFBMvaWxIC85xBBYQosJX8=
 		</data>
 		<key>LICENSE.docx</key>
 		<data>
@@ -70,23 +74,23 @@
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		fyVtQLHuUVK5a6q3eAF0WVjTJHM=
+		sWChFlRo5Es2HmYKWB00cdSXFyQ=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		c/VUQvRmVpAaF8qcIOXIjD4gK+k=
+		jzQLFBGVQyPuL5sjvoXCQi5ZMBQ=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		n8MIbtEs9+RT1zJbwuK5Cp+n6T4=
+		7lja5lkVL9QaEV77FPxYWvCs7Ks=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		c/VUQvRmVpAaF8qcIOXIjD4gK+k=
+		jzQLFBGVQyPuL5sjvoXCQi5ZMBQ=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		b69PfyRbpwRxy80khoRMT2uJyx8=
+		ZsDf1ziuIMfBkQkcMQ1wCv0i2ZU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -755,11 +759,18 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>.gitkeep</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
 		<key>Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kMDRMMsYjcCH9A6SKSbeeBLVor60Eo9ErzeQvnGPFxs=
+			g0+SbBGa3XgxAHBoJ3merCMZg0ABdTXDz4n32P/N5Fo=
 			</data>
 		</dict>
 		<key>Base.lproj/Localizable.strings</key>
@@ -836,7 +847,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zqFRgxoVibe0K0pxmKJGHZZmcssnFaQLDkP1YZWnOec=
+			fZju3+aTQ9VbcpvsYlIOvfr0gNxxm0xHOqVAp6y5kqQ=
 			</data>
 		</dict>
 		<key>Headers/MapboxNavigation.h</key>
@@ -864,35 +875,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			X+oEuUsgdvwV3gqbjJb+2Mau/rnkM9Teag2O9YIhOj4=
+			3/Nq1T1wRNl2jvRMAni7OWNALe+7qYCbZL0ttKZQibY=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lr1lXwHJ9jezNihbGothHqvMYSdA7STVGz7Rg60J8tw=
+			kC729GKb5GYYpU9MaDCrWjxY4kderm3OdxDFbXTr26w=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WrRmavCkGoomWFPMenO+xuXI+o13WiHTtLpajpK2NKs=
+			suQP0Zosl8ZgELYaabXeDEV+fErZw0RSYrMXotHfR7o=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lr1lXwHJ9jezNihbGothHqvMYSdA7STVGz7Rg60J8tw=
+			kC729GKb5GYYpU9MaDCrWjxY4kderm3OdxDFbXTr26w=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			x7n4YII/egkAoV+5EEQ6JxgBbGuMg3tEnjjx/FrvEn0=
+			HzveZE+jZw4aiVHRSB5MBkX+4KAlZQ3Ru679cUM/w8Y=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

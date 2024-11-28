@@ -58,8 +58,6 @@ class ViewController: BaseViewController {
         tableViewDataSource.append(ExampleCellsData(title: "Route Preview", type: .routePreview))
         tableViewDataSource.append(ExampleCellsData(title: "Navigation View", type: .navigationView))
     }
-    
-
 
 }
 
