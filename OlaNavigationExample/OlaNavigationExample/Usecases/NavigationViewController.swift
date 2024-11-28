@@ -22,7 +22,7 @@ class NavigationViewController: BaseViewController {
     let originLocation = CLLocation(latitude: 12.931428580880599, longitude: 77.6138952181033)
     let destinationCoordinate = CLLocation(latitude: 12.924198, longitude: 77.629262)
     
-    lazy var directionResponseData = self.loadMockJSON("direction_with_waypoints")
+    lazy var directionResponseData = self.loadMockJSON("direction_two")
     
     lazy var visualInstruction: UIView = {
         let v = UIView()

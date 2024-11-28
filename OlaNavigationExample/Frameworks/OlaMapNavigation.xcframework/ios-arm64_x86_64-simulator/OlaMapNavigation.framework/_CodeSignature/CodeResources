@@ -4,9 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.gitkeep</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
 		<key>Assets.car</key>
 		<data>
-		BoCxlyMA9LxLH4s4Hqb004MhILE=
+		rpzYy4Ed5y4151on6QNUkWrI13I=
 		</data>
 		<key>Base.lproj/Localizable.strings</key>
 		<data>
@@ -50,7 +54,7 @@
 		</data>
 		<key>Headers/MapboxCoreNavigation.h</key>
 		<data>
-		2HCYWG2zP+YKGIMy3dnArqx7sMk=
+		t26B1p8/MTVJZK7LQeHcfu4NgrI=
 		</data>
 		<key>Headers/MapboxNavigation.h</key>
 		<data>
@@ -62,7 +66,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		5Z0AFFkCE/is0qLiMNw99OdMpyc=
+		VPDb0FowrbLnoiS87HL5EXLVEfg=
 		</data>
 		<key>LICENSE.docx</key>
 		<data>
@@ -70,43 +74,43 @@
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Bu2QhHn3xA8j1UzebOiP1MeBdd4=
+		zymHFtYnyNeouymATr3Z2s7tvJc=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		XN/zJhq/PQWzf+LxwadcP/ymRl0=
+		Q6EZcNmSX9t+Ex68Jy34zHAtR64=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		7xzZRp9PpMVebnlYh96z5S7PzIk=
+		VU6Pk7Iv8aoGBUSJQrivCXr3MtQ=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		XN/zJhq/PQWzf+LxwadcP/ymRl0=
+		Q6EZcNmSX9t+Ex68Jy34zHAtR64=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		PX7IHcyQY7viwAfeD1TJ2NAoh3U=
+		gtPfjeXbwLG1kIylwgOwjdsa5gI=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Lyarh9OvlTcEjPEESeesJyj2Wdc=
+		M/ZwYA7BNEO0gtgbiC4q7JaAHhU=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		2pBCkz6vSc9lklZxmmBjYypj1UY=
+		mmHifUWx7HINd1v2CEUFaaiJm58=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ne+jcOJYJ5xVgNlK0j1OUsus8TM=
+		MPP4eI5gsS6IDzAMtFP71VY9chA=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		2pBCkz6vSc9lklZxmmBjYypj1UY=
+		mmHifUWx7HINd1v2CEUFaaiJm58=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		kFwovq4XbSgAyhFDxJ3B6Ie+Nn8=
+		OwWXcVRrOSa23BSB04uEDWQLcs0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -775,11 +779,18 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>.gitkeep</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
 		<key>Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kMDRMMsYjcCH9A6SKSbeeBLVor60Eo9ErzeQvnGPFxs=
+			g0+SbBGa3XgxAHBoJ3merCMZg0ABdTXDz4n32P/N5Fo=
 			</data>
 		</dict>
 		<key>Base.lproj/Localizable.strings</key>
@@ -856,7 +867,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zqFRgxoVibe0K0pxmKJGHZZmcssnFaQLDkP1YZWnOec=
+			fZju3+aTQ9VbcpvsYlIOvfr0gNxxm0xHOqVAp6y5kqQ=
 			</data>
 		</dict>
 		<key>Headers/MapboxNavigation.h</key>
@@ -884,70 +895,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ht7PW3rrzHUxXZkdi6l9ZnYugTfRyXjYd8MdclccJiM=
+			l+bIKTOjCTbJNMef0gnkuLp49FafdwJvkOKdqImXKRI=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qvH2gvGC4mG6scqU3DqaVemjdtG9frclzVfwsVA5w2E=
+			+YBZMR/vRijN3+dNdAq4uvWlvJkiml5SOA7BYvqp0oU=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KWI2EApjYFdPA1MyxpSRb8TsUPMhTnCvt9Anbvie+ss=
+			z6HI7ATho3/dTIYRnGnpd8eZD0OLogUA4rdff36893o=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qvH2gvGC4mG6scqU3DqaVemjdtG9frclzVfwsVA5w2E=
+			+YBZMR/vRijN3+dNdAq4uvWlvJkiml5SOA7BYvqp0oU=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HIOE/sFmGcWIj2O5w21TlmcXntQ5w7UB5xhzyrS/Gxc=
+			uFrFD1/m3VetCLW8V/xSB8FWrBMnPqq1qMW9yoZZJ7k=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3bdLx9mAT6FRpYoWe1lHh2Pe6+uwQVvHHlWOgzENes0=
+			mBSlwHE+ayUQgbUsMwGxXuBHxsN+JK27aBrhAUXLfFY=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v+Ur3j5J9oIlwU/0Ih6z2fITOia4hN1m6Cnt4CF6xSI=
+			aOzY0nXuUIZxXAiPHoV/84WKBK2MSvqvHxeyJNY/jpw=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yWyGa2TKRoqO3huDfldvBH9aDcrv+bPRNxs1NYqnwC4=
+			0K6w3Tp305gF+f+ibVNkb49+Vs7jlLt3rYpMzFWYPL8=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v+Ur3j5J9oIlwU/0Ih6z2fITOia4hN1m6Cnt4CF6xSI=
+			aOzY0nXuUIZxXAiPHoV/84WKBK2MSvqvHxeyJNY/jpw=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yDWZinOL7SbguOpWB+AzVKUNCLENuRqYi7GqR9dmelM=
+			FRQrwcX1/iBm6mAgR1zUOby+SNe3LjWF2AzfLqhqYrk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
