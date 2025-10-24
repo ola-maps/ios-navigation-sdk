@@ -129,7 +129,7 @@ class NavigationViewController: BaseViewController {
     func loadNavigationView() {
     
         guard let jsonData = self.directionResponseData else { return }
-        self.navigationService.navigate(jsonData: jsonData, origin: originLocation, destination: self.destinationCoordinate, mode: .driving) { [weak self] state in
+        self.navigationService.navigate(jsonData: jsonData, origin: originLocation, destination: self.destinationCoordinate, requestId: "NA", mode: .driving) { [weak self] state in
             guard let self = self else { return }
             switch state {
             case .success(vc: let navigationVC):

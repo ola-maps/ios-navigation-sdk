@@ -1,0 +1,11 @@
+framework module OlaMapDirection {
+  umbrella header "OlaMapDirection.h"
+  export *
+
+  module * { export * }
+}
+
+module OlaMapDirection.Swift {
+  header "OlaMapDirection-Swift.h"
+  requires objc
+}
