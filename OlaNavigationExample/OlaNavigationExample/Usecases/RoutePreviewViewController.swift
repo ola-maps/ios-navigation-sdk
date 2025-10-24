@@ -79,6 +79,7 @@ extension RoutePreviewViewController: OlaMapServiceDelegate {
     
     func mapSuccessfullyLoaded() {
         self.createPreview(self.originCoordinate, self.destinationCoordinate)
+        self.olaMap.setCamera(destinationCoordinate.getCLCoordinate2D())
     }
     
     func didChangeCamera() {
