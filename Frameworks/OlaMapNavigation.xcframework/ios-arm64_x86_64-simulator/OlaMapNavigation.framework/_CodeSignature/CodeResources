@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		5OIuLf7brDXeitRmj+Y37/sX14U=
+		V9AqS6p7W+RvT1gDyO2hzbW9qBM=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		LamSvGEtE9zotf6VcvDe00wfPJY=
+		SCEOiBGiJ+y07rX3yDFT8QJ5e54=
 		</data>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -647,7 +647,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EcM5qGiw7icEc7mnlO1sRPlTWDdbip7TX1febemyreI=
+			96p5vvCRYxs4SlvSDprEvBNx0tAVnbNiyi6t5eW54ws=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -682,7 +682,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9hYbT9IgFU4mqb1gecEyF04ff7pxZQ262sdFiqZV09Y=
+			PdH+PR+dGImvFR4n6Va8lfO2s429whaa1QTcuHXYwJY=
 			</data>
 		</dict>
 		<key>Modules/OlaMapNavigation.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
