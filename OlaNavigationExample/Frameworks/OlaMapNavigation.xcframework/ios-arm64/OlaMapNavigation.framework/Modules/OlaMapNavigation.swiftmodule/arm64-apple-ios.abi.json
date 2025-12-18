@@ -100194,6 +100194,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "MoEngageResettableValue",
+            "printedName": "MoEngageResettableValue",
+            "usr": "s:12MoEngageCore0aB15ResettableValueP",
+            "mangledName": "$s12MoEngageCore0aB15ResettableValueP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Gesture",
             "printedName": "Gesture",
             "children": [

@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name          = 'OlaMapNavigation'
-  spec.version       = '1.6.86'
+  spec.version       = '1.6.88'
   spec.summary       = 'OlaMaps PlatformSDK for Navigation and Maps'
   spec.description   = 'Navigation SDK provides a comprehensive toolkit for integrating basic & advanced navigation capabilities into your iOS applications.'
   spec.homepage      = 'https://maps.olakrutrim.com/'
